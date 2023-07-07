@@ -46,7 +46,7 @@ If this runs without errors, CMake is working properly.
 
 After that, try typing:
 ```bash
-make -j12
+make -j4
 ```
 
 If that works, you've now compiled a few C++ programs which you can upload to the Pico!
