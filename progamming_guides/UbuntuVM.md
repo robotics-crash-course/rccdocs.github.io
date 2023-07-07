@@ -7,13 +7,23 @@
 
 + Next we need to download the operating system we'd like to place on the VM (virtual machine). For RCC we'll be using Ubuntu 22.0.4. The .iso (image of data) can be found here https://releases.ubuntu.com/jammy/.
 
-+ Once these two are downloaded, launch the VirtualBox application. Here, you'll want to create a new virtual machine. Name it as you wish, and select a folder to place the VM. Select the **.iso** you just downloaded and continue
++ **NOTE: If you don't feel comfortable moving forward that's okay, just get these files downloaded so we don't need to download them during class!**
 
-+ Next, create a username and password (of course, make these memorable!). You can also add a hostname and domain name. Be sure to check the **Guest Additions** box, as this will allow you to copy and paste from your native machine onto the VM.
++ Once these two are downloaded, launch the VirtualBox application. Here, you'll want to create a new virtual machine. Name it as you wish, and select a folder to place the VM. Also, make sure the "Version" option is "Ubuntu (64-bit). Select the **.iso** you just downloaded and continue.
 
 + You'll now need to allocate resources to your Virtual Machine. Generally speaking, **at least 2GB (2000MB) of RAM and 4 CPU cores** are advised if you want the VM to run smoothly. Allocate as many as are reasonable for your hardware, just don't put too much.
 
-+ Then you will create a "partition" for your Operating System to run on, **preallocating** the full-size would help with performance but isn't necessary (don't do this unless you have plenty of space to spare). Generally **aim for 20GB of space** or more.
++ Then you will create a "partition" for your Operating System to run on, **preallocating** the full-size would help with performance but isn't necessary (don't do this unless you have plenty of space to spare). Generally **aim for 20GB of space** or more
+
+<!-- + Go into settings for the VM you've just created. We want to "insert" our CD of ubuntu which is the **.iso** you just downloaded. Under attributes is a small button with an image of a disk on it. Click that then add the **.iso** you downloaded. This way when you start up the VM, it will boot from the "CD" which is the installation CD for ubuntu22.04
+![alt text](images/vm_settings_iso.png "Title") -->
+
++ In settings go to the display tab. Turn the "Video Memory" slider up to 128MB. Press OK.
+
+## **Installing Ubuntu on the VM**
++ Press Start now for your new ubuntu VM and go through the installation process.
+  
++ Next, create a username and password (of course, make these memorable!, also don't use spaces!). You can also add a hostname and domain name. Be sure to check the **Guest Additions** box, as this will allow you to copy and paste from your native machine onto the VM.
 
 + With that all done, you should be ready to finish up the set-up for your virtual machine, but there's one last thing you might want to change. Now that you've created a virtual machine, you can add video memory to it. That can be found in the main **VM manager screen**, to the right. The default is **16MB**, increase it to about half of what you have capacity for.
 
@@ -48,8 +58,17 @@ exit
 
 + Once that's done, hit enter, and you should boot into Ubuntu with sudo permissions!
 
++ Change the resolution of the display in the virtual machine. Press the "Windows" key while you're in the VM and search "Displays". Go into that setting and change the resolution to something a big larger. Don't go as big as your full screen if you want to be able to easily switch between the VM and your Host machine. I used 1400x900.
 
-That's it, you're done! Thanks for following through the tutorial.
++ Finally, let's add guest additions so that we can copy and paste between the Host machine and the VM. In the VM at the menu bar at the top, click Devices and at the bottom it says "Insert Guest Additions CD Image". Let it download. It should show up on the left hand bar of your VM as a disk.
+
++ We need to install a couple packages. In a terminal run:
+```
+sudo apt install virtualbox-dkms virtualbox-guest-utils
+```
++ Double click the CD image on the left, and then right click "autorun.sh". Press run as program, and it will install guest additions. After it finishes you will need to restart the VM. 
+
++ That's it, you're done! Thanks for following through the tutorial.
 
 
 *Suggestion: Personally, I like to use my VM on scaled mode so I can fit it in my screen easily, but you can adjust the resolution to whatever you like in the view section. Just don't make it as large as your native resolution so that you can fit the entirety of the VM on your display!*

@@ -1,6 +1,6 @@
 # **Setting up your Pico Development Enviornment**
 
-The first step is to open up your terminal. This can be done by searching for it by pressing the windows key and typing in the search bar or pressing `CTRL+ALT+t`
+The first step is to open up your **terminal**. This can be done by searching for it by pressing `CMD+space`
 
 Within your terminal type the following commands:
 ```bash
