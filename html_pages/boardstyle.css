@@ -1,10 +1,10 @@
 @font-face {
     font-family: "Quicksand";
-    src: url("Quicksand/static/Quicksand-SemiBold.ttf");
+    src: url("fonts/Quicksand/static/Quicksand-SemiBold.ttf");
     }
     @font-face {
         font-family: "cour";
-        src: url("cour.ttf");
+        src: url("fonts/cour.ttf");
         }
     @media screen and (max-width: 600px) {
         .container {
