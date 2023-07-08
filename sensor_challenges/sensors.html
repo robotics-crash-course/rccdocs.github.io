@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Practical Sensors Challenges</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../html_pages/style.css">
+    
+    </head>
+    <body>
+        <div>
+            <h1>Practical Sensors Challenges</h1>
+        </div>
+        <div class="welcome">
+            <h2>Ready to go?</h2>
+            <div class="tips">
+                <h3>Goal of these challenges:</h3>
+                <ul>
+                    <li>Apply your newfound c++ abilities to using the sensors and actuators on your robot</li>
+                    <!-- <li>Week 1 checkpoint is reached after completing the <span style="color: darkgreen;">green</span> challenges</li> -->
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <h2 class="center">Push Button</h2>
+        <div class="container">
+            <div class="left-column">
+                <h3>How it works:</h3>
+                <ul class="bom">
+                    <li>The push button on the raft is connected to gpio 22 when
+                    the *extra* is activated with a shunt</li>
+                    <li>When pressed, the button connects gpio22 to GND</li>
+                </ul>
+                <h3>How to use:</h3>
+                <ul class="bom">
+                    <li>To setup the button as an interrupt use: <br><br>
+                        <span class=code>rcc_init_pushbutton();</span>
+                    </li>
+                    <br>
+                    <li>To check if your button is working, can use something like this in the while loop:<br><br>
+                       <span class="code">
+                        if(!gpio_get(RCC_PUSHBUTTON))<br>
+                        {<br>
+                            cout << "PUSHBUTTON PRESSED!\n";<br>
+                        }
+                       </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="right-column">
+                <h2>Challenges:</h2>
+                <h3>Level 1:</h3>
+                <ul>
+                    <li>Use the button to index through an array of integer values between 0-100</li>
+                </ul>
+                <h3>Level 2:</h3>
+                <ul>
+                    <li>Set the servo to the position indexed by the button presses setup in Level 1</li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <h2 class="center">Odometry</h2>
+        <div class="container">
+            <div class="left-column">
+                <h3>How the sensor works:</h3>
+                <ul class="bom">
+                    <li>Each wheel has a 3D printed encoder wheel attached</li>
+                    <li>The encoder wheel has 40 slits</li>
+                    <li>The optical interrupt sensor has an IR LED on one side
+                    and a light sensor on the other side</li>
+                    <li>When the light sensor sees the IR led, the built in red
+                    LED turns on, meaning that the IR light is going through the
+                    encoder wheel</li>
+                </ul>
+                <h3>What is odometry?</h3>
+                <ul class="bom">
+                    <li>Odometry means calculating the position or orientation
+                    of the robot; we can calculate how far each wheel has traveled based on
+                    the rotation of the encoder wheels</li>
+                </ul>
+                <h3>How can we use it?</h3>
+                <ul class="bom">
+                    <li>If we know how far each of the wheels has traveled, we
+                    can make our robot go anywhere!</li>
+                    <li>Because no two motors are the same, supplying the same
+                    motor power (or PWM signal) to both motors does NOT mean
+                    that each wheel will travel the same distance.</li>
+                    <li>This challenge will help us characterize the motors on the robot</li>
+                </ul>
+            </div>
+            <div class="half-column">
+                <h2>Challenges:</h2>
+                <h3>Level 1:</h3>
+                <ul>
+                    <li>Use the button on gpio22 to start the motors</li>
+                    <li>Give both motors the same power, something less than 100</li>
+                    <li>Stop both motors once both encoders have reached 200 counts</li>
+                    <ul>
+                        <li>Take note of which direction your robot turns</li> 
+                    </ul>
+                </ul>
+                <h3>Level 2:</h3>
+                <ul>
+                    <li>Add a scale factor to either reduce or increase power to
+                    one of the motors, adjust <span class="code">scale_factor</span> until it is able to drive straight</li>
+                    <li>Use something like this: <br>
+                    <span class="code">MotorPower(&motors, scale_factor*50, 50);</span><br>
+                </li>
+                    <li>Hint: if robot is turning left, the right wheel is faster</li>
+                </ul>
+            </div>
+            <div class="half-column">
+                <figure>
+                    <img class="view" src="sensor-images/odom-200counts.png" alt="200 counts on each motor">
+                </figure>
+            </div>
+        </div>
+        <hr>
+        <h2 class="center">3. Attach Motor Mounts</h2>
+        <div class="container">
+            <div class="left-column">
+                <h3>Materials</h3>
+                <ul class="bom">
+                    <li>2x Motors (with wheel attached)</li>
+                    <li>1x 3D printed left motor bracket</li>
+                    <li>1x 3D printed right motor bracket</li>
+                    <li>4x M3x30mm Fastener</li>
+                    <li>4x M3 Hex Nut</li>
+                    <li>4x M3 Lock Washer</li>
+                    <li>4x M3 Washer</li>
+                </ul>
+                <figure>
+                    <img class="view" src="images/withfasteners-leftmotorbracketattached.png" alt="Left motor with bracket attached">
+                </figure>
+                <figcaption>Left motor with bracket attached</figcaption>
+                <figure>
+                    <img class="view" src="images/withfasteners-rightmotorbracketattached.png" alt="Right motor with bracket attached">
+                </figure>
+                <figcaption>Right motor with bracket attached</figcaption>
+            </div>
+            <div class="right-column">
+                <figure>
+                    <img id="left-ex" class="view" src="images/withfasteners-left motor bracket attachment exploded.png" alt="exploded view of left motor mount attachment">
+                </figure>
+                <figcaption>Exploded view of <em>left</em> motor bracket attachment</figcaption>
+                <figure>
+                    <img id="bothwheels" class="view" src="images/withfasteners-bothmotorswithbrackets.png" alt="both motors with their mounts attached">
+                </figure>
+                <figcaption>Repeat for right motor, it mirrors the left motor</figcaption>
+            </div>
+        </div>
+        <hr>
+        <h2 class="center">4. Attach Motors to Frame</h2>
+        <div class="container">
+            <div class="left-column">
+                <h3>Materials</h3>
+                <ul class="bom">
+                    <li>2x Motor (with bracket attached)</li>
+                    <li>4x M3x12mm Fastener</li>
+                    <li>4x M3 Hex Nut</li>
+                    <li>4x M3 Lock Washer</li>
+                    <li>4x M3 Washer</li>
+                </ul>
+                <figure>
+                    <img class="view" src="images/withfasteners-bothmotorsattachedpasswiresthru.png" alt="another view of both wheels attached">
+                </figure>
+                <figcaption>Once attached, pass wires through holes</figcaption>
+            </div>
+            <div class="right-column">
+                <figure>
+                    <img class="view" src="images/withfasteners-bothwheels-caster.png" alt="exploded view of left motor attachment to frame">
+                </figure>
+                <figcaption>Exploded view</figcaption>
+            </div>
+        </div>
+        <hr>
+        <h2 class="center">5. Optical Interrupt Sensors</h2>
+        <div class="container">
+            <div class="left-column">
+                <h3>Materials</h3>
+                <ul class="bom">
+                    <li>2x Optical interrupt sensor</li>
+                    <li>2x M3x12mm Fastener</li>
+                    <li>2x M3 Hex Nut</li>
+                    <li>2x M3 Lock Washer</li>
+                    <li>2x M3 Washer</li>
+                </ul>
+                <figure>
+                    <img class="view" src="images/withfasteners-optattached.png" alt="optical interrupt sensors attached">
+                </figure>
+                <figcaption>Make sure pins point towards caster wheel</figcaption>
+            </div>
+            <div class="right-column">
+                <figure>
+                    <img class="view" src="images/withfasteners-opticalintexp.png" alt="exploded view of optical interrupt attachment">
+                </figure>
+                <figcaption>Exploded view</figcaption>
+            </div>
+        </div>
+        <hr>
+        <h2 class="center">6. Motor Controller Board</h2>
+        <div class="container">
+            <div class="left-column">
+                <h3>Materials</h3>
+                <ul class="bom">
+                    <li>1x Motor Controller</li>
+                    <li>1x 3D Printed Spacer</li>
+                    <li>2x M3x16mm Fastener</li>
+                    <li>2x M3 Hex Nut</li>
+                    <li>2x M3 Lock Washer</li>
+                    <li>2x M3 Washer</li>
+                </ul>
+                <figure>
+                    <img class="view" src="images/withfasteners-removemotorshunts.png" alt="removing jumpers from motor driver">
+                </figure>
+                <figcaption>First, remove jumpers from motor controller on ENA and ENB pins </figcaption>
+            </div>
+            <div class="half-column">
+                <figure>
+                    <img class="view" src="images/withfasteners-l289nwithjoinedspacer.png" alt="exploded view of adding spacer to motor controller">
+                </figure>
+                <figcaption>Attach spacer onto 16mm fasteners</figcaption>
+            </div>
+            <div class="half-column">
+                <figure>
+                    <img class="view" src="images/withfasteners-attachhbridge.png" alt="exploded view of motor controller attachment to frame">
+                </figure>
+                <figcaption>Attach to frame</figcaption>
+            </div>
+        </div>
+        <hr>
+        <h2 class="center">6. ~Raft~ PCB Attachment</h2>
+        <div class="container">
+            <div class="left-column">
+                <h3>Materials</h3>
+                <ul class="bom">
+                    <li>1x Raft Circuit Board</li>
+                    <li>1x 3D Printed Spacer</li>
+                    <li>3x M3x16mm Fastener</li>
+                    <li>3x M3 Hex Nut</li>
+                    <li>3x M3 Lock Washer</li>
+                    <li>3x M3 Washer</li>
+                </ul>
+                <figure>
+                    <img class="view" src="images/withfasteners-raftnopico.png" alt="drawing of the pico raft pcb without the pico attached">
+                </figure>
+                <figcaption>Raft Printed Circuit Board <br> More about the board <a href="board.html" target="_blank">here</a></figcaption>
+            </div>
+            <div class="half-column">
+                <figure>
+                    <img class="view" src="images/withfasteners-picopcbxspacer.png" alt="exploded view of adding spacers to pico raft">
+                </figure>
+                <figcaption>Attach spacer onto 16mm fasteners </figcaption>
+            </div>
+            <div class="half-column">
+                <figure>
+                    <img class="view" src="images/withfasteners-pcbtoframe.png" alt="exploded view of raft attachment to frame">
+                </figure>
+                <figcaption>Attach to frame</figcaption>
+            </div>
+        </div>
+        <hr>
+        <h2 class="center">7. Fasten Servo Horn to Lidar Sensor Bracket</h2>
+        <div class="container">
+            <div class="left-column">
+                <h3>Materials</h3>
+                <ul class="bom">
+                    <li>1x Servo Bag (with horns and fasteners inside)</li>
+                    <li>1x 3D Printed Lidar Sensor Bracket</li>
+                </ul>
+                <!-- <figure>
+                    <img class="view" src="images/withfasteners-horntosensorbracket.png" alt="exploded view drawing of the lidar sensor bracket with the servo horn attached">
+                </figure>
+                <figcaption></figcaption> -->
+            </div>
+            <div class="half-column">
+                <figure>
+                    <img class="view" src="images/withfasteners-hornintobracket.png" alt="exploded view drawing of the lidar sensor bracket with the servo horn attached">
+                </figure>
+                <figcaption>Slide the horn into the sensor bracket</figcaption>
+            </div>
+            <div class="half-column">
+                <figure>
+                    <img class="view" src="images/withfasteners-horntobracketattach.png" alt="exploded view drawing of the lidar sensor bracket with the servo horn attached">
+                </figure>
+                <figcaption>Use screwdriver to attach self-tapping fasteners into the outer holes</figcaption>
+            </div>
+        </div>
+        <hr>
+        <h2 class="center">8. Fasten Servo to Frame</h2>
+        <div class="container">
+            <div class="left-column">
+                <h3>Materials</h3>
+                <ul class="bom">
+                    <li>1x Servo Motor</li>
+                    <li>2x M2.2x9.5mm self-tapping fasteners</li>
+                </ul>
+                <!-- <figure>
+                    <img class="view" src="images/withfasteners-horntosensorbracket.png" alt="exploded view drawing of the lidar sensor bracket with the servo horn attached">
+                </figure>
+                <figcaption></figcaption> -->
+            </div>
+            <div class="half-column">
+                <figure>
+                    <img class="view" src="images/withfasteners-servowiresinfront.png" alt="exploded view drawing of the fasteners used for the servo to frame">
+                </figure>
+                <figcaption>Pass servo wires through hole so that they are in the front, route up and down through the 3 holes</figcaption>
+            </div>
+            <div class="half-column">
+                <figure>
+                    <img class="view" src="images/withfasteners-servotoframe.png" alt="exploded view drawing of the lidar sensor bracket with the servo horn attached">
+                </figure>
+                <figcaption>Use screwdriver to attach self-tapping fasteners into the frame, be careful to not break the plastic <br> (its okay if you need hot glue here)</figcaption>
+            </div>
+        </div>
+        <hr>
+        <h2 class="center">Congrats! You're about halfway</h2>
+        <div class="container">
+            <div class="left-column">
+                <h3>Before moving on to electrical assembly, <br> check the following:</h3>
+                <ul class="bom">
+                    <li>You have all of the components so far</li>
+                    <li>All components feel secure</li>
+                </ul>
+                <h3>Once ready to move on: <a href="electrical.html" target="_blank">click here</a></h3>
+                <!-- <figure>
+                    <img class="view" src="images/withfasteners-horntosensorbracket.png" alt="exploded view drawing of the lidar sensor bracket with the servo horn attached">
+                </figure>
+                <figcaption></figcaption> -->
+            </div>
+            <!-- <div class="half-column">
+                <figure>
+                    <img class="view" src="images/withfasteners-servowiresinfront.png" alt="exploded view drawing of the fasteners used for the servo to frame">
+                </figure>
+                <figcaption>Pass servo wires through hole so that they are in the front, route up and down through the 3 holes</figcaption>
+            </div> -->
+            <div class="right-column">
+                <figure>
+                    <img class="view" src="images/withfasteners-halfway.png" alt="robot so far">
+                </figure>
+            </div> 
+        </div>
+    </body>
+</html>
