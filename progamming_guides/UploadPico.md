@@ -13,7 +13,7 @@ At the bottom of the file you will use the macro called `make_exec(arg1 arg2)` a
 
 `arg2` should be the location of your file relative to `/dev/pico`.
 
-Now, you need to create a build directory where you will run the CMake command (the build directory should be in `/dev/pico/buld`). Type the following:
+Now, you need to create a build directory where you will run the CMake command (the build directory should be in `/dev/pico/build`). Type the following:
 ```bash
 mkdir build && cd build
 cmake ..
