@@ -13,7 +13,7 @@
 
 `PicoDev.md`: Setting upthe Pico development enviornment
 
-`UploadPico.md`: Learn how to build and upload programs to the Pico.
+`UploadPico.md`: Learn how to build and upload programs to the Pico
 
 `shell-cheat-sheet.pdf`: Document containing helpful commands to use the shell
 
