@@ -88,7 +88,7 @@
                     can make our robot go anywhere!</li>
                     <li>Because no two motors are the same, supplying the same
                     motor power (or PWM signal) to both motors does NOT mean
-                    that each wheel will travel the same distance.</li>
+                    that each wheel will travel the same speed.</li>
                     <li>This challenge will help us characterize the motors on the robot</li>
                 </ul>
             </div>
@@ -126,5 +126,59 @@
             </div>
         </div>
         <hr>
+        <h2 class="center">Lidar Sensor</h2>
+        <div class="container">
+            <div class="left-column">
+                <h3>How the sensor works:</h3>
+                <ul class="bom">
+                    <li>The Lidar or Time-Of-Flight sensor sends a beam of IR
+                    light, and keeps track of how long it takes for the beam to
+                    return to the sensor, based on the speed of light, we can
+                    calculate how far away an obstacle is</li>
+                </ul>
+                <h3>How can we use it?</h3>
+                <ul class="bom">
+                    <li>The lidar sensor returns a distance in millimeters,
+                    which is very precise;  we can use it to detect obstacles
+                    the robot should avoid</li>
+                    <li>Since our lidar is attached to a servo motor, we can
+                    check for obstacles all around the front of the robot</li>
+                </ul>
+            </div>
+            <div class="half-column">
+                <h2>Challenges:</h2>
+                <h3>Level 1:</h3>
+                <ul>
+                    <li>Use the button on gpio22 to start the motors so that the robot spins around</li>
+                    <li>Two options:</li>
+                    <ul>
+                        <li>Have one wheel stationary while the other wheel spins</li>
+                        <li>Spin one wheel forwards and the other backwards</li>
+                    </ul>
+                    <li>Stop the motors when the lidar detects an object some distance away</li>
+                </ul>
+                <h3>Level 2:</h3>
+                <ul>
+                    <li>Use the button on gpio22 to start the motors</li>
+                    <li>Use your scale factor on the motor's power so the robot drives somewhat straight</li>
+                    <li>Stop both motors once the lidar detects an object 20 cm away (200 mm away)</li>
+                </ul>
+                <h3>Level 3:</h3>
+                <ul>
+                    <li>Use the button on gpio22 to start the motors</li>
+                    <li>Have the robot stay 20 cm from an object</li>
+                    <li>Hint: move forwards or backwards based on lidar sensor reading</li>
+                </ul>
+            </div>
+            <div class="half-column">
+                <figure>
+                    <img class="view" src="sensor-images/lidarrotateuntilseeobject.png" alt="robot rotates until sees an object">
+                </figure>
+                <hr>
+                <figure>
+                    <img class="view" src="sensor-images/lidarstopdistfromobject.png" alt="robot stops 20 cm from object">
+                </figure>
+            </div>
+        </div>
     </body>
 </html>
