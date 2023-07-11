@@ -1,4 +1,4 @@
-# **Setting up your Pico Development Enviornment**
+# **Setting up your Pico Development Environment**
 
 The first step is to open up your terminal. This can be done by searching for it by pressing the windows key and typing in the search bar or pressing `CTRL+ALT+t`
 
