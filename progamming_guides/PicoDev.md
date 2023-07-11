@@ -32,6 +32,8 @@ Lastly, clone the repo:
 ```bash
 sudo git clone https://github.com/robotics-crash-course/rcc-pico.git
 
+cd rcc-pico
+
 git submodule update --init --recursive
 ```
 
