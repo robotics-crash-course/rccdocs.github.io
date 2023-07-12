@@ -17,3 +17,6 @@
 
 `shell-cheat-sheet.pdf`: Document containing helpful commands to use the shell
 
+## sensor_challenges/
+
+`sensors.html`: First Set of Practical Sensor Challenges
