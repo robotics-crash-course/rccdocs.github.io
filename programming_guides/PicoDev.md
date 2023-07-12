@@ -78,7 +78,7 @@ Expected Output:
 ```bash
 drwxrwxr-x  6 andy andy 4096 Jul 11 23:27 rcc-pico
 ```
-If the two names in the center, andy andy in this case aren't your username, you need to run the command below.
+If the two names in the center, `andy andy` in this case aren't your username, you need to run the command below.
 
 
 ```bash
