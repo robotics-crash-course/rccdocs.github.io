@@ -72,3 +72,12 @@ sudo apt install virtualbox-dkms virtualbox-guest-utils
 
 
 *Suggestion: Personally, I like to use my VM on scaled mode so I can fit it in my screen easily, but you can adjust the resolution to whatever you like in the view section. Just don't make it as large as your native resolution so that you can fit the entirety of the VM on your display!*
+
+
+## Getting USB devices to pass into VM
++ Put your pico in boot mode and connect it to your PC
++ Go to settings for your VM and then the USB tab
+  + Press the little green plus on the right side and click on "Pi Pico BOOT"
++ Place code on the pico such that it will infinitely print something to the serial terminal
+  + Press the green plus again, look for "Pi Pico"
++ Reset the VM and now when you plug in the pico it should automatically connect to the VM
