@@ -32,6 +32,8 @@ Lastly, clone the repo (run this command from the directory you want your robots
 ```bash
 sudo git clone https://github.com/robotics-crash-course/rcc-pico.git
 
+cd rcc-pico
+
 git submodule update --init --recursive
 ```
 
