@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Using Robot</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="scripts/xcode.min.css">
+        <script src="scripts/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script>
+    
+    </head>
+    <body>
+        <div>
+            <h1>Guide on Using your Robot</h1>
+        </div>
+        <div class="welcome">
+            <h2>Jump to:</h2>
+            <div>
+                <ul class="tips">
+                    <li><a href="#button">Raft's Button</a></li>
+                    <li><a href="#pot">Raft's Potentiometer</a></li>
+                    <li><a href="#dcmotor">DC Motor</a></li>
+                    <li><a href="#servo">Servo Motor</a></li>
+                    <li><a href="#lidar">Lidar</a></li>
+                    <li><a href="#imu">IMU</a></li>
+                    <li><a href="#encoder">Encoders</a></li>
+                    <li>Ready to Play?</li>
+                    <ul>
+                        <li><a href="../sensor_challenges/sensorchallenges1.html">Sensor Challenges 1</a></li>
+                        <li>Calculus Challenges</li>
+                    </ul>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <h2 class="center">Raft-Input Sensors</h2>
+
+        <div class="container">
+            <div class="wide-column" id="button">
+                <h2 class="center">Push Button</h2>
+                <h3>Our button:</h3>
+                <ul>
+                    <li>This button is called a single-pole-single-throw or SPST</li>
+                    <li>Button's name is B3F-1020</li>
+                    <li><a href="https://www.digikey.com/en/products/detail/omron-electronics-inc-emc-div/B3F-1020/44059" target="_blank">Link to Component on Digikey</a></li>
+                    <li><a href="https://omronfs.omron.com/en_US/ecb/products/pdf/en-b3f.pdf" target="_blank">Link to Datasheet</a></li>
+                </ul>
+                <h3>How it works:</h3>
+                <ul class="bom">
+                    <li>The push button on the raft is connected to gpio 22 when
+                    the *extra* is activated with a shunt</li>
+                    <li>When pressed, the button connects gpio22 to GND</li>
+                </ul>
+                <h3>Example Code:</h3>
+                <ol class="bom">
+                    <li>Includes RCC library</li>
+                    <li>Within <span class="code">main()</span>function:</li>
+                        <ol>
+                            <li>Sets up cyw43</li>
+                            <li>Turns on Pico's LED</li>
+                            <li>Sets up button</li>
+                            <li>In <span class="code">while()</span>loop:</li>
+                            <ol>
+                                <li>Checks if button is pressed</li>
+                            </ol>
+                        </ol>
+                </ol>
+            </div>
+            <div class="wide-column">
+            <pre><code>
+            #include "rcc_stdlib.h"
+            using namespace std;
+
+            int main()
+            {
+                stdio_init_all();    
+                sleep_ms(1500);
+                if(cyw43_arch_init())
+                {
+                    cout << "CYW43 INIT failed!" << '\n';
+                }
+                cout << "init worked!" << '\n';
+                cyw43_arch_gpio_put(0,1); //turns on LED
+
+                rcc_init_pushbutton(); //set up button
+                
+                while(true)
+                {   
+                        if(!gpio_get(RCC_PUSHBUTTON)) //if NOT reading gpio (if gpio is low)
+                        {
+                            //do stuff here when button pressed
+                            cout << "PUSHBUTTON PRESSED!\n"; 
+                        }
+                }
+            }
+            </code></pre>
+            </div>
+        </div>
+        
+        <div class="container thin" id="pot">
+            <div class="wide-column">
+                <h2 class="center">Potentiometer</h2>
+                <h3>Our potentiometer:</h3>
+                <ul>
+                    <li>This potentiometer is a linear 10kΩ variable resistor</li>
+                     <li>Potentiometer's name is PT01-D120K2-B103</li>
+                    <li><a href="https://www.digikey.com/en/products/detail/cui-devices/PT01-D120K2-B103/15903919" target="_blank">Link to Component on Digikey</a></li>
+                    <li><a href="https://www.cuidevices.com/product/resource/pt01.pdf" target="_blank">Link to Datasheet</a></li>
+                </ul>
+                <h3>How it works:</h3>
+                <ul class="bom">
+                    <li>The potentiometer *extra* is activated with a shunt on pin 28</li>
+                    <li>When you twist the nob, the resistance changes</li>
+                    <li>+3.3V passes through the variable resistor at all times</li>
+                    <li>Potentiometer acts as a voltage divider</li>
+                    <ul>
+                        <li><a href="https://learn.sparkfun.com/tutorials/voltage-dividers/" target="_blank">Read more here</a></li>
+                    </ul>
+                    <li>Gpio 28 has an Analog-to-Digital Converter (ADC)</li>
+                    <li>This converts the analog voltage to a digital value that the Pico can understand</li>
+                   
+                </ul>
+                <h3>Example Code:</h3>
+                <ol class="bom">
+                    <li>Includes RCC library</li>
+                    <li>Within <span class="code">main()</span>function:</li>
+                        <ol>
+                            <li>Sets up cyw43</li>
+                            <li>Turns on Pico's LED</li>
+                            <li>Sets up potentiometer's ADC</li>
+                            <li>In <span class="code">while()</span>loop:</li>
+                            <ol>
+                                <li>converts voltage to a digital reading using <span class="code">adc_read()</span></li>
+                            </ol>
+                        </ol>
+                </ol>
+            </div>
+            <div class="wide-column">
+            <pre><code>
+            #include "rcc_stdlib.h"
+            using namespace std;
+            
+            int main()
+            {
+                stdio_init_all();
+                sleep_ms(1500);
+                if(cyw43_arch_init())
+                {
+                    cout << "CYW43 INIT failed!" << '\n';
+                }
+                cout << "init worked!" << '\n';
+                cyw43_arch_gpio_put(0,1); //led on
+            
+                rcc_init_potentiometer(); //setup ADC
+            
+                while(true)
+                {
+                        int32_t pot_val = adc_read(); //values from 0 to +4097
+                        cout << "raw value: " << pot_val"\n";
+                        sleep_ms(100);
+                }
+            }
+            </code></pre>
+            </div>
+        </div>
+        <hr>
+
+        <h2 class="center">Actuators</h2>
+        <div class="container" id="dcmotor">
+            <div class="wide-column">
+                <h2 class="center">DC Motors</h2>
+                <h3>How a motor works:</h3>
+                <ul class="bom">
+                    <li>Our motors are DC Brushed Motors</li>
+                    <li><a href="https://www.youtube.com/watch?v=CWulQ1ZSE3c" target="_blank">Here's a pretty good video</a></li>
+                    <li>To control both the direction and speed of our motor, we use a motor controller</li>
+                </ul>
+                <h3>Our Motor Controller:</h3>
+                <ul class="bom">
+                    <li>The robot has an L298N Module</li>
+                    <li><a href="http://www.handsontec.com/dataspecs/L298N%20Motor%20Driver.pdf" target="_blank">Link to Datasheet</a></li>
+                    <li>On the Module, theres a Dual H-bridge Chip, the L298</li>
+                    <li><a href="https://www.sparkfun.com/datasheets/Robotics/L298_H_Bridge.pdf" target="_blank">Link to Datasheet</a></li>
+                    <li>This H-Bridge has 4 bipolar junction transistors (BJT)</li>
+                    <li>Turning on/off the correct BJTs changes the motor's polarity, changing the direction the wheel spins</li>
+                    <li>To control the speed of the motor, we use pulse-width-modulation (PWM)</li>
+                    <li>By setting the %ON or the Duty-Cycle, we can change the effective voltage sent to the motor, changing its speed</li>
+                </ul>
+                <h3>Example Code:</h3>
+                <ol class="bom">
+                    <li>Includes RCC library</li>
+                    <li>Within <span class="code">main()</span>function:</li>
+                    <ol>
+                        <li>Sets up cyw43</li>
+                        <li>Turns on Pico's LED</li>
+                        <li>Sets up motor struct</li>
+                        <li>Sets left and right to ENB and ENA</li>
+                        <li>Enables PWM</li>
+                        <li>In <span class="code">while()</span>loop:</li>
+                        <ol>
+                            <li>Sets motor speed</li>
+                        </ol>
+                    </ol>
+                </ol>  
+            </div>
+            <div class="wide-column">
+            <pre><code>
+                #include "rcc_stdlib.h"
+                using namespace std;
+                
+                int main()
+                {
+                    stdio_init_all();
+                    sleep_ms(1500);
+                    if(cyw43_arch_init())
+                    {
+                        cout << "CYW43 INIT failed!" << '\n';
+                    }
+                    cout << "init worked!" << '\n';
+                    cyw43_arch_gpio_put(0,1); //led on
+                
+                    Motor motors; //struct setup
+                    MotorInit(&motors, RCC_ENB, RCC_ENA, 1000); //setup left and right
+                    MotorsOn(&motors); //enable PWM
+                
+                    while(true)
+                    {
+                        MotorPower(&motors, 100, 100); 
+                    }
+                }
+            </code></pre>
+            </div>
+        </div>
+
+        <div class="container thin" id="servo">
+            <div class="wide-column">
+                <h2 class="center">Servo Motor</h2>
+                <h3>How a servo motor works:</h3>
+                <ul class="bom">
+                    <li>Servo motors have a mini DC motor attached to a set of gears</li>
+                    <li>Inside the servo, there is a potentiometer that knows the position of the servo</li>
+                    <li>Servo motors are controlled by a PWM signal that corresponds to the desired position</li>
+                    <li>The circuit inside has feedback built in to reach and hold the position set by the PWM signal</li>
+                </ul>
+                <h3>Our Servo Motor:</h3>
+                <ul class="bom">
+                    <li>MG90S <a href="https://www.electronicoscaldas.com/datasheet/MG90S_Tower-Pro.pdf" target="_blank">Link to Datasheet</a></li>
+                </ul>
+                <h3>Example Code:</h3>
+                <ol class="bom">
+                    <li>Includes RCC library</li>
+                    <li>Within <span class="code">main()</span>function:</li>
+                    <ol>
+                        <li>Sets up cyw43</li>
+                        <li>Turns on Pico's LED</li>
+                        <li>Sets up servo struct</li>
+                        <li>Sets to GPIO 18</li>
+                        <li>Enables PWM</li>
+                        <li>In <span class="code">while()</span>loop:</li>
+                        <ol>
+                            <li>Sets servo position</li>
+                        </ol>
+                    </ol>
+                </ol>  
+            </div>
+            <div class="wide-column">
+            <pre><code>
+                #include "rcc_stdlib.h"
+                using namespace std;
+                
+                int main()
+                {
+                    stdio_init_all();
+                    sleep_ms(1500);
+                    if(cyw43_arch_init())
+                    {
+                        cout << "CYW43 INIT failed!" << '\n';
+                    }
+                    cout << "init worked!" << '\n';
+                    cyw43_arch_gpio_put(0,1); //led on
+                
+                    Servo s3; //struct setup
+                    ServoInit(&s3, 18, false, 50); //setup 
+                    ServoOn(&s3); //enable PWM
+                
+                    while(true)
+                    {
+                        ServoPosition(&s3, 50); //faces forward
+                    }
+                }
+            </code></pre>
+            </div>
+        </div>
+        <hr>
+        <h2 class="center">Sensors</h2>
+        <div class="container" id="lidar">
+            <div class="wide-column">
+                <h2 class="center">Lidar Sensor</h2>
+                <h3>How the Lidar Works:</h3>
+                <ul>
+                    <li>The lidar sends out beams of Infrared (IR) light</li>
+                    <li>When the light bounces off an object, the beam is detected by the IR sensor within the Lidar</li>
+                    <li>Based on the speed of light, it converts the timing to a distance</li>
+                </ul>
+                <h3>Our Lidar Sensor:</h3>
+                <ul>
+                    <li>We're using the VL53L0X</li>
+                    <li><a href="https://www.st.com/resource/en/datasheet/vl53l0x.pdf" target="_blank">Link to Datasheet</a></li>
+                    <li>The sensor is teeny, to connect it to our Pico, we use the module pcb with header pins</li>
+                </ul>
+                <h3>How it communicates:</h3>
+                <ul>
+                    <li>The sensor communicates with the Pico with inter-integrated circuit protocol (i2c)</li>
+                    <li>SCL is the clock signal</li>
+                    <li>SDA is the data signal</li>
+                </ul>
+                <h3>Example Code:</h3>
+                <ol class="bom">
+                    <li>Includes RCC library</li>
+                    <li>Within <span class="code">main()</span>function:</li>
+                    <ol>
+                        <li>Sets up cyw43</li>
+                        <li>Turns on Pico's LED</li>
+                        <li>Sets up i2c on the Pico</li>
+                        <li>Lidar's struct</li>
+                        <li>Sets to i2c1</li>
+                        <li>In <span class="code">while()</span>loop:</li>
+                        <ol>
+                            <li>returns a distance in millimeters</li>
+                            <li>a reading of 8190 means objects are too far away to detect</li>
+                        </ol>
+                    </ol>
+                </ol>  
+            </div>
+            <div class="wide-column">
+                <pre><code>
+                    #include "rcc_stdlib.h"
+                    using namespace std;
+                    
+                    int main()
+                    {
+                        stdio_init_all();
+                        sleep_ms(1500);
+                        if(cyw43_arch_init())
+                        {
+                            cout << "CYW43 INIT failed!" << '\n';
+                        }
+                        cout << "init worked!" << '\n';
+                        cyw43_arch_gpio_put(0,1); //led on
+                    
+                        rcc_init_i2c(); //setup pico i2c
+
+                        VL53L0X lidar; //struct
+                        rcc_init_lidar(&lidar); //setup lidar
+                    
+                        while(true)
+                        {
+                            uint16_t dist = getFastReading(&lidar);
+                            cout << "distance: " << dist << "\n";
+                            sleep_ms(100);
+                        }
+                    }
+                </code></pre>
+                </div>
+        </div>
+        <div class="container thin" id="imu">
+            <div class="wide-column">
+                <h2 class="center">IMU</h2>
+                <h3>Inertial Measurement Unit (IMU)</h3>
+                <ul class="bom">
+                    <li>IMU's measure acceleration and angular velocity in all 3 axes</li>
+                </ul>
+                <h3>How it works:</h3>
+                <ul>
+                    <li>Inside there are MEMS devices (micro-electrical-mechanical-systems)</li>
+                    <li>Plates the size of nano-meters are setup in an interlocking finger pattern</li>
+                    <li>When the device is accelerating or rotating, the plates move, changing their capacitance</li>
+                    <li>The device converts that change in capacitance into i2c signals for the Pico</li>
+                    <li><a href="https://lastminuteengineers.com/mpu6050-accel-gyro-arduino-tutorial/" target="_blank">This Page</a> has some cool gifs showing the types of motion</li>
+                </ul>
+                <h3>Our IMU:</h3>
+                <ul class="bom">
+                    <li>MPU6050 <a href="https://components101.com/sites/default/files/component_datasheet/MPU6050-DataSheet.pdf" target="_blank">Link to (long) Datasheet</a></li>
+                </ul>
+                <h3>Example Code:</h3>
+                <ol class="bom">
+                    <li>Includes RCC library</li>
+                    <li>Within <span class="code">main()</span>function:</li>
+                    <ol>
+                        <li>Sets up cyw43</li>
+                        <li>Turns on Pico's LED</li>
+                        <li>Setup i2c</li>
+                        <li>Sets up imu struct</li>
+                        <li>Begins communication with imu</li>
+                        <li>Calibrates sensor</li>
+                        <li>In <span class="code">while()</span>loop:</li>
+                        <ol>
+                            <li>updates pico on all the data</li>
+                            <li>prints the angular velocity about the z-axis</li>
+                        </ol>
+                    </ol>
+                </ol>  
+            </div>
+            <div class="wide-column">
+            <pre><code>
+                #include "rcc_stdlib.h"
+                using namespace std;
+                
+                int main()
+                {
+                    stdio_init_all();
+                    sleep_ms(1500);
+                    if(cyw43_arch_init())
+                    {
+                        cout << "CYW43 INIT failed!" << '\n';
+                    }
+                    cout << "init worked!" << '\n';
+                    cyw43_arch_gpio_put(0,1); //led on
+                
+                    rcc_init_i2c(); //setup i2c
+
+                    MPU6050 imu; //struct
+                    imu.begin(i2c1); //adds to i2c1
+                    imu.calibrate(); //hold robot still
+                
+                    while(true)
+                    {
+                        imu.update_pico(); //updates data
+                        float angvel_z = imu.getAngVelZ(); //call function to get data
+                        cout <<" z rotation: " << angvel_z << "\n";
+                        sleep_ms(100);
+                    }
+                }
+            </code></pre>
+            </div>
+        </div>
+        <div class="container thin" id="encoder">
+            <div class="wide-column">
+                <h2 class="center">Encoders</h2>
+                <h3>Optical Interrupt Sensors</h3>
+                <ul class="bom">
+                    <li>The encoder is made from a wheel with slits which is attached to each wheel of the robot</li>
+                    <li>The optical interrupt sensor sits around the encoder wheel</li>
+                    <li>The sensor has an IR LED (which is always on) on one side</li>
+                    <li>The other side has an IR photoresistor (which changes resistance when it detects the light)</li>
+                    <li>When the light is able to pass through the encoder wheel, the led on the sensor turns on</li>
+                </ul>
+                <h3>Using Interrupts:</h3>
+                <ul>
+                    <li>Just like the led on the sensor turns on and off when the wheel rotates, the pico detects these changes through hardware interrupts</li>
+                    <li>Each time the signal changes from LOW to HIGH or HIGH to LOW, the pico adds a count</li>
+                </ul>
+                <h3>Two functions to know:</h3>
+                <ul>
+                    <li><span class="code">getCount()</span> returns current count</li>
+                    <li><span class="code">setZero()</span> resets the count</li>
+                </ul>
+                <h3>Example Code:</h3>
+                <ol class="bom">
+                    <li>Includes RCC library</li>
+                    <li>Within <span class="code">main()</span>function:</li>
+                    <ol>
+                        <li>Sets up cyw43</li>
+                        <li>Turns on Pico's LED</li>
+                        <li>Sets up struct for left and right</li>
+                        <li>In <span class="code">while()</span>loop:</li>
+                        <ol>
+                            <li>Gets count for both wheels</li>
+                            <li>If left count is over 100, resets left count</li>
+                            <li>If right count is over 200, resets right count</li>
+                        </ol>
+                    </ol>
+                </ol>  
+            </div>
+            <div class="wide-column">
+            <pre><code>
+                #include "rcc_stdlib.h"
+                using namespace std;
+                
+                int main()
+                {
+                    stdio_init_all();
+                    sleep_ms(1500);
+                    if(cyw43_arch_init())
+                    {
+                        cout << "CYW43 INIT failed!" << '\n';
+                    }
+                    cout << "init worked!" << '\n';
+                    cyw43_arch_gpio_put(0,1); //led on
+                
+                    Left_Odom left; //struct
+                    Right_Odom right; //struct
+
+                    while(true)
+                    {
+                        int left_count = left.getCount(); //current left count
+                        int right_count = right.getCount(); //current right count
+                
+                        if (left_count>=100){
+                            left.setZero(); //resets left count
+                        }	
+                        if (right_count>=200){
+                            right.setZero(); //resets right count
+                        }
+                
+                        cout << left_count << " | " << right_count << "\n";
+                        sleep_ms(100);
+                    }
+                }
+            </code></pre>
+            </div>
+        </div>
+
+    </body>
+</html>
+
