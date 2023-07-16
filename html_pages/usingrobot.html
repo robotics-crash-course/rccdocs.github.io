@@ -31,8 +31,8 @@
                     <li><a href="#encoder">Encoders</a></li>
                     <li>Ready to Play?</li>
                     <ul>
-                        <li><a href="../sensor_challenges/sensorchallenges1.html">Sensor Challenges 1</a></li>
-                        <li>Calculus Challenges</li>
+                        <li><a href="../sensor_challenges/sensorchallenges1.html" target="_blank">Sensor Challenges 1</a></li>
+                        <li><a href="../sensor_challenges/sensorchallenges2.html" target="_blank">Calculus Challenges</a></li>
                     </ul>
                 </ul>
             </div>
@@ -98,7 +98,8 @@
                 <ul class="bom">
                     <li>The push button on the raft is connected to gpio 22 when
                     the *extra* is activated with a shunt</li>
-                    <li>When pressed, the button connects gpio22 to GND</li>
+                    <li>When the button is not pressed, the gpio reads HIGH</li>
+                    <li>When pressed, the button connects it to GND, and the pico reads LOW</li>
                 </ul>
                 <h3>Example Code:</h3>
                 <ol class="bom">
@@ -130,7 +131,7 @@
 
                 while(true)
                 {   
-                        if(!gpio_get(RCC_PUSHBUTTON)) //if NOT reading gpio (if gpio is low)
+                        if(!gpio_get(RCC_PUSHBUTTON)) //if gpio NOT high
                         {
                             //do stuff here when button pressed
                             cout << "PUSHBUTTON PRESSED!" << '\n'; 
@@ -162,6 +163,7 @@
                     </ul>
                     <li>Gpio 28 has an Analog-to-Digital Converter (ADC)</li>
                     <li>This converts the analog voltage to a digital value that the Pico can understand</li>
+                    <li>The Pico has a 12 bit resolution ADC, which is how we get 4097 as the maximum value</li>
                    
                 </ul>
                 <h3>Example Code:</h3>
@@ -259,7 +261,7 @@
                 
                     while(true)
                     {
-                        MotorPower(&motors, 100, 100); 
+                        MotorPower(&motors, 100, 100);  // %motor speed
                         cout << "motors going forwards" << '\n';
                         sleep_ms(100);
                     }
@@ -316,7 +318,7 @@
                 
                     while(true)
                     {
-                        ServoPosition(&s3, 50); //faces forward
+                        ServoPosition(&s3, 50); //50% of range (forwards)
                         cout << "servo facing forwards" << '\n';
                         sleep_ms(100);
                     }
