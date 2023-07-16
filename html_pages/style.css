@@ -123,3 +123,18 @@ hr{
 #bothwheels{
     width:70%;
 }
+
+.arrays{
+    color: orange;
+    font-style: italic;
+}
+
+.functions{
+    color:firebrick;
+    font-style: italic;
+}
+
+.bonus{
+    color:blueviolet;
+    font-style: italic;
+}
