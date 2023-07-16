@@ -21,6 +21,7 @@
             <h2>Jump to:</h2>
             <div>
                 <ul class="tips">
+                    <li><a href="#led">Pico's LED</a></li>
                     <li><a href="#button">Raft's Button</a></li>
                     <li><a href="#pot">Raft's Potentiometer</a></li>
                     <li><a href="#dcmotor">DC Motor</a></li>
@@ -37,10 +38,54 @@
             </div>
         </div>
         <hr>
-        <h2 class="center">Raft-Input Sensors</h2>
-
+        <h2 class="center" id="led">Pico's LED</h2>
         <div class="container">
-            <div class="wide-column" id="button">
+            <div class="wide-column">
+                <h3>Pico's Onboard LED</h3>
+                <h3>How to use:</h3>
+                <ul>
+                    <li>The LED on the PicoW is activated by the wifi chip onboard (the big silver box opposite to the usb)</li>
+                    <li>If is recommended to turn on the led in the first lines of your code so you know the code has been uploaded properly</li>
+                 </ul>
+                <h3>Example Code:</h3>
+                <ol class="bom">
+                    <li>Includes RCC library</li>
+                    <li>Within <span class="code">main()</span>function:</li>
+                        <ol>
+                            <li>Setup for wifi chip (cyw43)</li>
+                            <li>Turns on Pico's LED</li>
+                            <li>Within <span class="code">while()</span> loop, blinks led</li>
+                        </ol>
+                </ol>
+            </div>
+            <div class="wide-column">
+            <pre><code>
+                #include "rcc_stdlib.h"
+                using namespace std;
+    
+                int main()
+                {
+                    stdio_init_all();    
+                    sleep_ms(1500);
+                    cyw43_arch_init(); //setup 
+
+                    cyw43_arch_gpio_put(0,1); //turns on LED
+
+                    cout << "gonna blink now;)" << '\n';
+
+                    while(true)
+                    {   
+                        sleep_ms(300);
+                        cyw43_arch_gpio_put(0, !cyw43_arch_gpio_get(0)); //blinks LED
+                    }
+                }
+            </code></pre>
+            </div>
+        </div>
+        <hr>
+        <h2 class="center">Raft-Input Sensors</h2>
+        <div class="container" id="button">
+            <div class="wide-column" >
                 <h2 class="center">Push Button</h2>
                 <h3>Our button:</h3>
                 <ul>
@@ -60,7 +105,6 @@
                     <li>Includes RCC library</li>
                     <li>Within <span class="code">main()</span>function:</li>
                         <ol>
-                            <li>Sets up cyw43</li>
                             <li>Turns on Pico's LED</li>
                             <li>Sets up button</li>
                             <li>In <span class="code">while()</span>loop:</li>
@@ -79,21 +123,17 @@
             {
                 stdio_init_all();    
                 sleep_ms(1500);
-                if(cyw43_arch_init())
-                {
-                    cout << "CYW43 INIT failed!" << '\n';
-                }
-                cout << "init worked!" << '\n';
+                cyw43_arch_init(); //setup 
                 cyw43_arch_gpio_put(0,1); //turns on LED
 
                 rcc_init_pushbutton(); //set up button
-                
+
                 while(true)
                 {   
                         if(!gpio_get(RCC_PUSHBUTTON)) //if NOT reading gpio (if gpio is low)
                         {
                             //do stuff here when button pressed
-                            cout << "PUSHBUTTON PRESSED!\n"; 
+                            cout << "PUSHBUTTON PRESSED!" << '\n'; 
                         }
                 }
             }
@@ -129,7 +169,6 @@
                     <li>Includes RCC library</li>
                     <li>Within <span class="code">main()</span>function:</li>
                         <ol>
-                            <li>Sets up cyw43</li>
                             <li>Turns on Pico's LED</li>
                             <li>Sets up potentiometer's ADC</li>
                             <li>In <span class="code">while()</span>loop:</li>
@@ -148,11 +187,7 @@
             {
                 stdio_init_all();
                 sleep_ms(1500);
-                if(cyw43_arch_init())
-                {
-                    cout << "CYW43 INIT failed!" << '\n';
-                }
-                cout << "init worked!" << '\n';
+                cyw43_arch_init(); //setup 
                 cyw43_arch_gpio_put(0,1); //led on
             
                 rcc_init_potentiometer(); //setup ADC
@@ -160,7 +195,7 @@
                 while(true)
                 {
                         int32_t pot_val = adc_read(); //values from 0 to +4097
-                        cout << "raw value: " << pot_val"\n";
+                        cout << "raw value: " << pot_val << '\n';
                         sleep_ms(100);
                 }
             }
@@ -195,7 +230,6 @@
                     <li>Includes RCC library</li>
                     <li>Within <span class="code">main()</span>function:</li>
                     <ol>
-                        <li>Sets up cyw43</li>
                         <li>Turns on Pico's LED</li>
                         <li>Sets up motor struct</li>
                         <li>Sets left and right to ENB and ENA</li>
@@ -216,11 +250,7 @@
                 {
                     stdio_init_all();
                     sleep_ms(1500);
-                    if(cyw43_arch_init())
-                    {
-                        cout << "CYW43 INIT failed!" << '\n';
-                    }
-                    cout << "init worked!" << '\n';
+                    cyw43_arch_init(); //setup 
                     cyw43_arch_gpio_put(0,1); //led on
                 
                     Motor motors; //struct setup
@@ -230,6 +260,8 @@
                     while(true)
                     {
                         MotorPower(&motors, 100, 100); 
+                        cout << "motors going forwards" << '\n';
+                        sleep_ms(100);
                     }
                 }
             </code></pre>
@@ -255,7 +287,6 @@
                     <li>Includes RCC library</li>
                     <li>Within <span class="code">main()</span>function:</li>
                     <ol>
-                        <li>Sets up cyw43</li>
                         <li>Turns on Pico's LED</li>
                         <li>Sets up servo struct</li>
                         <li>Sets to GPIO 18</li>
@@ -276,11 +307,7 @@
                 {
                     stdio_init_all();
                     sleep_ms(1500);
-                    if(cyw43_arch_init())
-                    {
-                        cout << "CYW43 INIT failed!" << '\n';
-                    }
-                    cout << "init worked!" << '\n';
+                    cyw43_arch_init(); //setup 
                     cyw43_arch_gpio_put(0,1); //led on
                 
                     Servo s3; //struct setup
@@ -290,6 +317,8 @@
                     while(true)
                     {
                         ServoPosition(&s3, 50); //faces forward
+                        cout << "servo facing forwards" << '\n';
+                        sleep_ms(100);
                     }
                 }
             </code></pre>
@@ -314,7 +343,7 @@
                 </ul>
                 <h3>How it communicates:</h3>
                 <ul>
-                    <li>The sensor communicates with the Pico with inter-integrated circuit protocol (i2c)</li>
+                    <li>The sensor communicates with the Pico through inter-integrated circuit protocol (i2c)</li>
                     <li>SCL is the clock signal</li>
                     <li>SDA is the data signal</li>
                 </ul>
@@ -323,7 +352,6 @@
                     <li>Includes RCC library</li>
                     <li>Within <span class="code">main()</span>function:</li>
                     <ol>
-                        <li>Sets up cyw43</li>
                         <li>Turns on Pico's LED</li>
                         <li>Sets up i2c on the Pico</li>
                         <li>Lidar's struct</li>
@@ -345,17 +373,13 @@
                     {
                         stdio_init_all();
                         sleep_ms(1500);
-                        if(cyw43_arch_init())
-                        {
-                            cout << "CYW43 INIT failed!" << '\n';
-                        }
-                        cout << "init worked!" << '\n';
+                        cyw43_arch_init(); //setup 
                         cyw43_arch_gpio_put(0,1); //led on
                     
                         rcc_init_i2c(); //setup pico i2c
 
                         VL53L0X lidar; //struct
-                        rcc_init_lidar(&lidar); //setup lidar
+                        rcc_init_lidar(&lidar); //setup lidar on i2c1
                     
                         while(true)
                         {
@@ -391,7 +415,6 @@
                     <li>Includes RCC library</li>
                     <li>Within <span class="code">main()</span>function:</li>
                     <ol>
-                        <li>Sets up cyw43</li>
                         <li>Turns on Pico's LED</li>
                         <li>Setup i2c</li>
                         <li>Sets up imu struct</li>
@@ -400,7 +423,7 @@
                         <li>In <span class="code">while()</span>loop:</li>
                         <ol>
                             <li>updates pico on all the data</li>
-                            <li>prints the angular velocity about the z-axis</li>
+                            <li>gets angular velocity around z-axis</li>
                         </ol>
                     </ol>
                 </ol>  
@@ -414,11 +437,7 @@
                 {
                     stdio_init_all();
                     sleep_ms(1500);
-                    if(cyw43_arch_init())
-                    {
-                        cout << "CYW43 INIT failed!" << '\n';
-                    }
-                    cout << "init worked!" << '\n';
+                    cyw43_arch_init(); //setup 
                     cyw43_arch_gpio_put(0,1); //led on
                 
                     rcc_init_i2c(); //setup i2c
@@ -464,7 +483,6 @@
                     <li>Includes RCC library</li>
                     <li>Within <span class="code">main()</span>function:</li>
                     <ol>
-                        <li>Sets up cyw43</li>
                         <li>Turns on Pico's LED</li>
                         <li>Sets up struct for left and right</li>
                         <li>In <span class="code">while()</span>loop:</li>
@@ -485,11 +503,7 @@
                 {
                     stdio_init_all();
                     sleep_ms(1500);
-                    if(cyw43_arch_init())
-                    {
-                        cout << "CYW43 INIT failed!" << '\n';
-                    }
-                    cout << "init worked!" << '\n';
+                    cyw43_arch_init(); //setup 
                     cyw43_arch_gpio_put(0,1); //led on
                 
                     Left_Odom left; //struct
@@ -507,7 +521,7 @@
                             right.setZero(); //resets right count
                         }
                 
-                        cout << left_count << " | " << right_count << "\n";
+                        cout << left_count << " | " << right_count << '\n';
                         sleep_ms(100);
                     }
                 }
