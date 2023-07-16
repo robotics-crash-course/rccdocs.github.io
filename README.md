@@ -8,6 +8,8 @@
 
 `board.html`: Raft Board Guide
 
+`usingrobot.html`: Using Robot's Sensors and Actuators Guide
+
 ## programming_guides/
 `UbuntuVM.md`: Guide for creating a Ubuntu Virtual Machine within Linux
 
