@@ -21,4 +21,4 @@
 
 ## sensor_challenges/
 
-`sensors.html`: First Set of Practical Sensor Challenges
+`sensorchallenges1.html`: First Set of Practical Sensor Challenges
