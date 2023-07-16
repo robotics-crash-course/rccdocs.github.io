@@ -69,6 +69,11 @@ figcaption{
     padding: 20px;
     box-sizing: border-box;
 }
+.wide-column{
+    flex-basis: 40%;
+    padding: 20px;
+    box-sizing: border-box;
+}
 
 .right-column {   
     flex-basis: 70%;
@@ -96,7 +101,11 @@ figcaption{
 }
 
 hr{
-    border-top: 2px solid black;
+    border-top: 3px solid black;
+}
+
+.thin{
+    border-top: 1px solid black;
 }
 
 #left-ex{
