@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Practical Sensors Challenges</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../html_pages/style.css">
+    
+    </head>
+    <body>
+        <div>
+            <h1>Practical Sensors Challenges</h1>
+        </div>
+        <div class="welcome">
+            <h2>Ready to go?</h2>
+            <div class="tips">
+                <h3>Goal of these challenges:</h3>
+                <ul>
+                    <li>Apply your newfound c++ abilities by using the sensors and actuators on your robot</li>
+                    <!-- <li>Week 1 checkpoint is reached after completing the <span style="color: darkgreen;">green</span> challenges</li> -->
+                    <li>Note: all of these challenges are pre-calculus and pre-state machines, new challenges will be set week 2;)</li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <h2 class="center">Push Button</h2>
+        <div class="container">
+            <div class="left-column">
+                <h3>How it works:</h3>
+                <ul class="bom">
+                    <li>The push button on the raft is connected to gpio 22 when
+                    the *extra* is activated with a shunt</li>
+                    <li>When pressed, the button connects gpio22 to GND</li>
+                </ul>
+                <h3>How to use:</h3>
+                <ul class="bom">
+                    <li>To setup the button as an interrupt use: <br><br>
+                        <span class="code">rcc_init_pushbutton();</span>
+                    </li>
+                    <br>
+                    <li>To check if your button is working, can use something like this in the while loop:<br><br>
+                       <span class="code">
+                        if(!gpio_get(RCC_PUSHBUTTON))<br>
+                        {<br>
+                            cout << "PUSHBUTTON PRESSED!\n";<br>
+                        }
+                       </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="right-column">
+                <h2>Challenges:</h2>
+                <h3>Level 1:</h3>
+                <ol>
+                    <li>Use the button to index through an array of integer values between 0-100</li>
+                </ol>
+                <h3>Level 2:</h3>
+                <ul>
+                    <li>Set the servo to the position indexed by the button presses setup in Level 1</li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <h2 class="center">Odometry</h2>
+        <div class="container">
+            <div class="left-column">
+                <h3>How the sensor works:</h3>
+                <ul class="bom">
+                    <li>Each wheel has a 3D printed encoder wheel attached</li>
+                    <li>The encoder wheel has 40 slits</li>
+                    <li>The optical interrupt sensor has an IR LED on one side
+                    and a light sensor on the other side</li>
+                    <li>When the light sensor sees the IR led, the built in red
+                    LED turns on, meaning that the IR light is going through the
+                    encoder wheel</li>
+                </ul>
+                <h3>What is odometry?</h3>
+                <ul class="bom">
+                    <li>Odometry means calculating the position or orientation
+                    of the robot; we can calculate how far each wheel has traveled based on
+                    the rotation of the encoder wheels</li>
+                </ul>
+                <h3>How can we use it?</h3>
+                <ul class="bom">
+                    <li>If we know how far each of the wheels has traveled, we
+                    can make our robot go anywhere!</li>
+                    <li>Because no two motors are the same, supplying the same
+                    motor power (or PWM signal) to both motors does NOT mean
+                    that each wheel will travel the same speed.</li>
+                    <li>This challenge will help us characterize the motors on the robot</li>
+                </ul>
+            </div>
+            <div class="half-column">
+                <h2>Forward Challenges:</h2>
+                <h3>Level 1:</h3>
+                <ul>
+                    <li>Use the button on gpio22 to start the motors</li>
+                    <li>Give both motors the same power, something less than 100</li>
+                    <li>Stop both motors once both encoders have reached 200 counts</li>
+                    <ul>
+                        <li>Take note of which direction your robot turns</li> 
+                    </ul>
+                </ul>
+                <h3>Level 2:</h3>
+                <ul>
+                    <li>Add a scale factor to either reduce or increase power to
+                    one of the motors, adjust <span class="code">scale_factor</span> until it is able to drive straight</li>
+                    <li>Use something like this: <br>
+                    <span class="code">MotorPower(&motors, scale_factor*50, 50);</span><br>
+                </li>
+                    <li>Hint: if robot is turning left, the right wheel is faster</li>
+                </ul>
+                <h3>Level 3:</h3>
+                <ul>
+                    <li>Have the scale factor be adjustable with the
+                    potentiometer on gpio 28, make sure the potentiometer extra
+                    is activated on the raft board</li>
+                </ul>
+                <hr>
+                <h2>Rotation Challenges:</h2>
+                <h3>Level 1:</h3>
+                <ul>
+                    <li>Rotate the robot 90 degrees clockwise</li>
+                    <li>Keep one wheel stationary (only give power to one motor)</li>
+                    <li>Use trial and error to determine the amount of counts
+                    required to rotate 90 degrees</li>
+                    <ul>
+                        <li>Hint: while printing the counts to the terminal, rotate
+                            the robot manually to get a sense for the number of
+                            counts</li>
+                    </ul>
+                    
+                </ul>
+                <h3>Level 2:</h3>
+                <ul>
+                    <li>Use push button to start motors</li>
+                    <li>Travel forward for some distance</li>
+                    <li>Stop the robot for 1 second</li>
+                    <li>Rotate the robot 90 degrees counter clockwise</li>
+                    <li>Stop the robot</li>
+                </ul>
+            </div>
+            <div class="half-column">
+                <figure>
+                    <img class="view" src="sensor-images/odom-200counts.png" alt="200 counts on each motor">
+                </figure>
+            </div>
+        </div>
+        <hr>
+        <h2 class="center">Lidar Sensor</h2>
+        <div class="container">
+            <div class="left-column">
+                <h3>How the sensor works:</h3>
+                <ul class="bom">
+                    <li>The Lidar or Time-Of-Flight sensor sends a beam of IR
+                    light, and keeps track of how long it takes for the beam to
+                    return to the sensor, based on the speed of light, we can
+                    calculate how far away an obstacle is</li>
+                </ul>
+                <h3>How can we use it?</h3>
+                <ul class="bom">
+                    <li>The lidar sensor returns a distance in millimeters,
+                    which is very precise;  we can use it to detect obstacles
+                    the robot should avoid</li>
+                    <li>Since our lidar is attached to a servo motor, we can
+                    check for obstacles all around the front of the robot</li>
+                </ul>
+            </div>
+            <div class="half-column">
+                <h2>Challenges:</h2>
+                <h3>Level 1:</h3>
+                <ul>
+                    <li>Use the button on gpio22 to start the motors so that the robot spins around</li>
+                    <li>Two options:</li>
+                    <ul>
+                        <li>Have one wheel stationary while the other wheel spins</li>
+                        <li>Spin one wheel forwards and the other backwards</li>
+                    </ul>
+                    <li>Stop the motors when the lidar detects an object some distance away</li>
+                </ul>
+                <h3>Level 2:</h3>
+                <ul>
+                    <li>Use the button on gpio22 to start the motors</li>
+                    <li>Use your scale factor on the motor's power so the robot drives somewhat straight</li>
+                    <li>Stop both motors once the lidar detects an object 20 cm away (200 mm away)</li>
+                </ul>
+                <h3>Level 3:</h3>
+                <ul>
+                    <li>Use the button on gpio22 to start the motors</li>
+                    <li>Have the robot stay 20 cm from an object</li>
+                    <li>Hint: move forwards or backwards based on lidar sensor reading</li>
+                </ul>
+                <h3>Level 4:</h3>
+                <ul>
+                    <li>Use the button on gpio22 to start rotating the servo back and forth</li>
+                    <li>When and object is detected, stop the servo</li>
+                    <li>Store somewhere the "location" of the object <br> Hint: ~left or right</li>
+                    <li>Put the servo facing forwards</li>
+                    <li>Rotate the robot (using either method from Level 1) until the object is detected again</li>
+                    <li>(optional, but flashy) Move forward until 2-3 cm from the object</li>
+                </ul>
+
+            </div>
+            <div class="half-column">
+                <figure>
+                    <img class="view" src="sensor-images/lidarrotateuntilseeobject.png" alt="robot rotates until sees an object">
+                </figure>
+                <hr>
+                <figure>
+                    <img class="view" src="sensor-images/lidarstopdistfromobject.png" alt="robot stops 20 cm from object">
+                </figure>
+            </div>
+        </div>
+        <hr>
+        <h2 class="center">IMU</h2>
+        <div class="container">
+            <div class="left-column">
+                <h3>How it works:</h3>
+                <ul class="bom">
+                    <li>The IMU or Inertial Measurement Unit, is capable of
+                    measuring acceleration and rotational velocity in all 3 axes
+                    on the robot</li>
+                    <li>For this robot, we're most interested in the
+                    acceleration in the X and Y directions and the rotational
+                    velocity around the Z direction</li>
+                </ul>
+                <h3>How to use:</h3>
+                <ul class="bom">
+                    <li><span class="code">imu.getAngVelZ()</span> tells us how
+                    fast the robot is rotating around the wheel's axis</li>
+                    <li>This value can be integrated to determine angular distance travelled (or amount rotated)</li>
+                    <li><span class="code">imu.getAccelX()</span> and <span class="code">imu.getAccelY()</span> tells us how
+                        fast the robot is accelerating in the X and Y directions</li>
+                    <li>These values can be integrated twice to determine the
+                    position of the robot, while this is not a great substitute for
+                    the encoder odometry, it can be used to enhance our
+                    knowledge of where the robot is going</li>
+                </ul>
+            </div>
+            <div class="right-column">
+                <h2>Challenges:</h2>
+                <h3>Level 1:</h3>
+                <ul>
+                    <li>Based on the <span class="code">imu.getAngVelZ()</span>
+                    reading, determine which way the z-axis points</li>
+                    <ul>
+                        <li>Hint: use the right hand rule from physics (positive
+                        rotations are counter clockwise about a positive
+                        axis)</li>
+                    </ul>
+                </ul>
+                <h3>Level 2:</h3>
+                <ul>
+                    <li>Rotate the robot at 90 degrees per second</li>
+                    <li>Lots of hints for this one:</li>
+                    <ul>
+                        <li>Use pushbutton to start motors at some <span class="code">base_power</span>, something slow like 40</li>
+                        <li>In a loop:</li>
+                        <li>Calculate an <span class="code">error</span> between 90.0 and the <span class="code">imu.getAngVelZ()</span> reading</li>
+                        <li>Add a <span class="code">power_boost</span> to the
+                        motor's power based on the calculated error. Be careful
+                        though, <span class="code">MotorPower()</span>takes an integer input and the <span class="code">error</span>
+                        is a float</li>
+                        <li>Something like this:</li>
+                        <ul>
+                            <li><span class="code">power_boost = static_cast&lt;int&gt;(kp*error)</span></li>
+                        </ul>
+                        <li>where <span class="code">kp</span> is a float (this is called a proportional gain in controls)</li>
+                        <li>Add the <span class="code">power_boost</span> to <span class="code">base_power</span> and see if the robot can reach 90 deg/sec</li>
+                    </ul>
+                    <li>To know if you're at 90 deg/sec, can turn off the led if the error is below some value</li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>
+
+<!-- to add another challenge: add this template inside the right-column or
+half-column div containing the other levels -->
+<!-- <h3>Level :</h3>
+    <ul>
+        <li></li>
+        <li></li>
+        <ul>
+            <li></li>
+            <li></li>
+        </ul>
+    </ul> -->

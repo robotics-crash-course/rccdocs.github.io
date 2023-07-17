@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Python Challenges</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../html_pages/style.css">
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <style>
+            .indent{
+                margin-left: 10%;
+            }
+            .thr{
+                border-top: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h1>Python Challenges</h1>
+        </div>
+        <div class="welcome">
+            <h2>Ready to go?</h2>
+            <div class="tips">
+                <h3>Goal of these challenges:</h3>
+                <ul>
+                    <li>Apply your newfound python abilities to finding derivatives and integrals!</li>
+                    <!-- <li>Week 1 checkpoint is reached after completing the <span style="color: darkgreen;">green</span> challenges</li> -->
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <h2 class="center">Differentiation</h2>
+        <!--Differentiation: Main Quest-->
+        <div class="container">
+            <div class="left-column">
+                <h3>Main Quest:</h3>
+                <ul class="bom">
+                    <li>Create a function that finds the velocity at a particular point in time of an object's trajectory, given a particular function that describes distance traveled over time.</li>
+                    <ul>
+                        <li>The function should pass in TWO arguments: the time of interest (tau) and the delta-t (dt)</li>
+                        <li>Your code should return a single value, the velocity/derivative</li>
+                        <li>For this activity, set the time of interest, tau, to 0 seconds, and delta-t, dt, to 0.5 seconds.</li>
+                    </ul>    
+                </ul>
+            </div>
+            <div class="half-column">
+                <h3>Method:</h3>
+                <ul class="bom">
+                    <li>Using the function:
+                        <span class="indent"> \(x = 3t^2 + 5t + 7\)</span>
+                    </li> <br>
+                    <ol>
+                        <li>
+                            Find the distance, x, traveled at time tau by plugging in tau into the function.
+                        </li> <br>
+                        <li> 
+                            Find the distance traveled at time tau + dt by plugging tau + dt into the function
+                        </li> <br>
+                        <li>
+                            Find the slope of the line that spans the two points. That is your velocity at time tau.
+                        </li> <br>
+                        <li>
+                            Call the function again, but this time with delta-t = 0.1. Do it again with delta-t = 0.001s, 0.00001s. Do you notice anything?
+                        </li> <br>
+                    </ol>
+                </ul>
+            </div>
+            <div class="half-column">
+                <figure>
+                    <img class="view" src="images/mainquest1.png">
+                </figure>
+                <body>
+                    <span class="center">
+                        At tau = 0 and dt = 0.5s, the calculated derivative is...
+                    </span>
+                </body> <!--help!-->
+            </div>
+        </div>
+        <!--Differentiation: Side Quest-->
+        <div class="container thr">
+            <div class="left-column">
+                <h3>Side Quest 1:</h3>
+                <ul class="bom">
+                    <li>Create a function that finds the velocity at a particular points in time of an object's trajectory, given a particular function, and store each velocity, at each point in time, as a different element in an array.</li>
+                    <ul>
+                        <li>The function should pass in TWO arguments: the time of interest (tau) and the delta-t (dt)</li>
+                        <li>Your code should iterate and find the velocity at tau, tau+dt, tau+2*dt, etc. and should store the velocities in an array.</li>
+                        <li>Calculate the velocities from t = 0s to t = 3s using a delta-t of 0.001s (basically your array should have 3000 elements)</li>
+                    </ul>    
+                </ul>
+                <h3>Method:</h3>
+                <ul class="bom">
+                    <li>Using the function:
+                        <span class="indent"> \(x = 3t^2 + 5t + 7\)</span>
+                    </li> <br>
+                    <ol>
+                        <li>
+                            Find the distance, x, traveled at time tau by plugging in tau into the function. Find the distance at tau + dt and calculate the velocity between the two points.
+                        </li> <br>
+                        <li>
+                            Do the same with tau + dt and tau + 2dt. And tau + 2dt and tau + 3dt, and so forth. Store all the velocities in the array.
+                        </li> <br>
+                    </ol>
+                </ul>
+            </div>
+            <div class="half-column">
+                <h3>Side Quest 2:</h3>
+                    <ul class="bom">
+                        <li>Using matplotlib and your code from the previous challenge, plot the array you created in Side Quest 1. You can find the example code in the python_challenges folder. </li>
+                        <li>What do you notice about the derivative function? Those of you who have taken calculus will know why it looks like it does.</li>   
+                    </ul>
+                    <h3>Method:</h3>
+                    <ul class="bom">
+                        <li>Using the function:
+                            <span class="indent"> \(x = 3t^2 + 5t + 7\)</span>
+                        </li> <br>
+                        <ol>
+                            <li>
+                                Use the code example in the python_challenges folder to create your own plot. Attempt to add your new plot to the existing graph.
+                            </li> <br>
+                        </ol>
+                    </ul>
+            </div>
+        </div>
+        <hr>
+        <h2 class="center">Integration</h2>
+        <!--Integration: Main Quest-->
+        <div class="container">
+            <div class="left-column">
+                <h3>Main Quest:</h3>
+                <ul class="bom">
+                    <li>Create a function that finds the distance traveled at a particular point in time of an object's trajectory, given a particular function for the velocity.</li>
+                    <ul>
+                        <li>The function should pass in THREE arguments: the start time of interest (tau1), the end time of interest (tau2), and the delta-t (dt)</li>
+                        <li>Your code should return a single value, the distance/interal</li>
+                        <li>For this activity, set the time interval of interest to be from 0 to 3 seconds, and delta-t, dt, to 0.5 seconds.</li>
+                    </ul>    
+                </ul>
+            </div>
+            <div class ="half-column">
+                <h3>Method:</h3>
+                <ul class="bom">
+                    <li>Using the function:
+                        <span class="indent"> \(v = 6t + 5\)</span>
+                    </li> <br>
+                    <ol> <!-- --> <!-- -->
+                        <li>
+                            Determine how many rectangles will be calculated under the curve. Use this number to define the upper limit of the range for the iterator in your loop. (If you are confident, try writing an <i>expression</i> for how many rectangles are under the curve; if delta-t changes, the number )
+                        </li> <br>
+                        <li> 
+                            Use the Right-Hand Riemann sum:
+                            <ol>
+                                <li>
+                                    The first area calculation will be using the minimum value of the range plus delta-t; in our case, it would be 0 + 0.5. Calculate the area of the rectangle, base * height, where the base is delta-t, and the height is v(0+0.5).
+                                </li>
+                                <li>
+                                    Calculate the areas of the other rectangles, using the heights of v(0+2*0.5), v(0+3*0.5, etc.)
+                                </li>
+                                <li>
+                                    Add all the calculated areas up to find the approximation of the area under the curve.
+                                </li>
+                            </ol>
+                        </li> <br>
+                        <li>
+                            Output the integral; this is the amount of distance covered from time t = 0 to t = 3.
+                        </li> <br>
+                        <li>
+                            Change delta-t to 0.1. Change it to 0.001. What do you notice?
+                        </li> <br>
+                        <li>
+                            Notice that, as opposed to the differentiation quests, the integral isn't AT a particular point in time, but rather BETWEEN two points in time. Try changing the time intervals to 0s to 1s, and 1s to 3s. See if it adds up to your original estimation. 
+                        </li> <br>
+                    </ol>
+                </ul>
+            </div>
+            <div class="half-column">
+                <figure>
+                    <img class="view" src="images/mainquest2.png">
+                </figure>
+                <body>
+                    <span class="center">
+                        From tau1 = 0s to tau2 = 3s, and with dt = 0.5s, the calculated integral is...
+                    </span>
+                </body> <!--help!-->
+            </div>
+        </div>
+        <div class="container thr">
+            <div class="left-column">
+                <h3>Side Quest 1:</h3>
+                <ul class="bom">
+                    <li>Create a function that stores the current total area in an array as the loop iterates through the number of rectangles.</li>
+                    <ul>
+                        <li>The function should pass in THREE arguments: the time interval, describes by tau1 and tau2, and the delta-t (dt)</li>
+                        <li>Your code should iterate and find the area of the first rectangle, the first two rectangles, the first three rectangles, etc. and stores the growing total area as elements in an array.</li>
+                        <li>Calculate the distances from t = 0s to t = 3s using a delta-t of 0.001s (basically your array should have 3000 elements)</li>
+                        <li>In other words, the array should be a running total of the distance traveled by the robot.</li>
+                    </ul>    
+                </ul>
+                <h3>Method:</h3>
+                <ul class="bom">
+                    <li>Using the function:
+                        <span class="indent"> \(x = 6t + 5\)</span>
+                    </li> <br>
+                    <ol>
+                        <li>
+                            Take the right-hand Riemann sum of each rectangle.
+                        </li> <br>
+                        <li>
+                            Add it to the total area.
+                        </li> <br>
+                        <li>
+                            Append the current total area to the array.
+                        </li> <br>
+                        <li>
+                            Repeat until the end of the time interval. 
+                        </li> <br>
+                    </ol>
+                </ul>
+            </div>
+            <div class="half-column">
+                <h3>Side Quest 2:</h3>
+                    <ul class="bom">
+                        <li>Using matplotlib and your code from the previous challenge and a veryyyyy small delta-t, plot the array you created in Side Quest 1. You can find the example code in the python_challenges folder. </li>
+                        <li>What do you notice about the integral function? Those of you who have taken calculus will know why it looks like it does.</li>   
+                    </ul>
+                    <h3>Method:</h3>
+                    <ul class="bom">
+                        <li>Using the function:
+                            <span class="indent"> \(x = 3t^2 + 5t + 7\)</span>
+                        </li> <br>
+                        <ol>
+                            <li>
+                                Use the code example in the python_challenges folder to create your own plot. Attempt to add your new plot to the existing graph.
+                            </li> <br>
+                        </ol>
+                    </ul>
+            </div>
+        </div>
+        <script>
+            MathJax.typesetPromise(); // Renders LaTeX equations
+        </script>
+    </body>
+</html>
+
+<!-- to add another challenge: add this template inside the right-column or
+half-column div containing the other levels -->
+<!-- <h3>Level :</h3>
+    <ul>
+        <li></li>
+        <li></li>
+        <ul>
+            <li></li>
+            <li></li>
+        </ul>
+    </ul> -->
