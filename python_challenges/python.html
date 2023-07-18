@@ -29,7 +29,6 @@
                 <h3>Goal of these challenges:</h3>
                 <ul>
                     <li>Apply your newfound python abilities to finding derivatives and integrals!</li>
-                    <!-- <li>Week 1 checkpoint is reached after completing the <span style="color: darkgreen;">green</span> challenges</li> -->
                 </ul>
             </div>
         </div>
@@ -38,59 +37,60 @@
         <!--Differentiation: Main Quest-->
         <div class="container">
             <div class="left-column">
-                <h3>Main Quest:</h3>
+                <h3><span class="ez">★ </span>Main Quest:</h3>
                 <ul class="bom">
-                    <li>Create a function that finds the velocity at a particular point in time of an object's trajectory, given a particular function that describes distance traveled over time.</li>
+                    <li>Create a <span class="functions">python function</span> that calculates a derivative</li>
                     <ul>
-                        <li>The function should pass in TWO arguments: the time of interest (tau) and the delta-t (dt)</li>
-                        <li>Your code should return a single value, the velocity/derivative</li>
-                        <li>For this activity, set the time of interest, tau, to 0 seconds, and delta-t, dt, to 0.5 seconds.</li>
+                        <li>The function should pass in TWO arguments: the time of interest \(tau\) and the delta-t, \(\Delta t\)</li>
+                        <li>Your code should return a single value, the <span class="emph">velocity</span></li>
+                        <li>For this activity, set \(tau\) to 0 seconds and \(\Delta t\) to 0.5 seconds</li>
                     </ul>    
                 </ul>
             </div>
             <div class="half-column">
                 <h3>Method:</h3>
                 <ul class="bom">
-                    <li>Using the function:
+                    <li>Using the polynomial:
                         <span class="indent"> \(x = 3t^2 + 5t + 7\)</span>
                     </li> <br>
+                    <li>The <span class="functions">function</span> should:</li>
+                    <br>
                     <ol>
-                        <li>
-                            Find the distance, x, traveled at time tau by plugging in tau into the function.
-                        </li> <br>
-                        <li> 
-                            Find the distance traveled at time tau + dt by plugging tau + dt into the function
-                        </li> <br>
-                        <li>
-                            Find the slope of the line that spans the two points. That is your velocity at time tau.
-                        </li> <br>
-                        <li>
-                            Call the function again, but this time with delta-t = 0.1. Do it again with delta-t = 0.001s, 0.00001s. Do you notice anything?
-                        </li> <br>
+                        <li>Find the distance traveled at time \(tau\) </li> <br>
+                        <li>Find the distance traveled at time \((tau + \Delta t)\)</li> <br>
+                        <li>Find the slope of the line that spans the two points</li> <br>
+                        <li>Return the estimated<span class="emph">velocity</span></li>
                     </ol>
+                    <br>
+                    <li>Call the <span class="functions">function</span> again, but this time with \(\Delta t\) = 0.1 </li>
+                    <li>Do it again with \(\Delta t\) = 0.001 and \(\Delta t\) = 0.00001 </li>
+                    <li>Do you notice anything?</li> <br>
                 </ul>
             </div>
             <div class="half-column">
                 <figure>
                     <img class="view" src="images/mainquest1.png">
                 </figure>
-                <body>
+                <figcaption>At \(tau\) = 0 and \(\Delta t\) = 0.5s, the calculated derivative is...</figcaption>
+                <!-- <body>
                     <span class="center">
-                        At tau = 0 and dt = 0.5s, the calculated derivative is...
+                        
                     </span>
-                </body> <!--help!-->
+                </body> help! -->
             </div>
         </div>
         <!--Differentiation: Side Quest-->
         <div class="container thr">
             <div class="left-column">
-                <h3>Side Quest 1:</h3>
+                <h3>For those who are brave, <br>some side quests:)</h3>
+            </div>
+            <div class="half-column">
+                <h3><span class="mid">★★ </span>Side Quest 1:</h3>
                 <ul class="bom">
-                    <li>Create a function that finds the velocity at a particular points in time of an object's trajectory, given a particular function, and store each velocity, at each point in time, as a different element in an array.</li>
+                    <li>Create a <span class="functions">python function</span> that finds the <span class="emph">velocity</span> at many points in time and store them in an <span class="arrays">array</span></li>
                     <ul>
-                        <li>The function should pass in TWO arguments: the time of interest (tau) and the delta-t (dt)</li>
-                        <li>Your code should iterate and find the velocity at tau, tau+dt, tau+2*dt, etc. and should store the velocities in an array.</li>
-                        <li>Calculate the velocities from t = 0s to t = 3s using a delta-t of 0.001s (basically your array should have 3000 elements)</li>
+                        <li>The <span class="functions">function</span> should pass in THREE arguments: the start time, the end time, and the timestep, \(\Delta t\)</li>
+                        <li>Calculate the velocities from t = 0s to t = 3s using a \(\Delta t\) of 0.001s (hint: your array should have 3000 elements)</li>
                     </ul>    
                 </ul>
                 <h3>Method:</h3>
@@ -100,19 +100,20 @@
                     </li> <br>
                     <ol>
                         <li>
-                            Find the distance, x, traveled at time tau by plugging in tau into the function. Find the distance at tau + dt and calculate the velocity between the two points.
+                            Find the distance, \(x\), traveled at the start time and one \(\Delta t\) from the start time. Calculate the velocity.
                         </li> <br>
                         <li>
-                            Do the same with tau + dt and tau + 2dt. And tau + 2dt and tau + 3dt, and so forth. Store all the velocities in the array.
+                            Do the same with \(2\Delta t\), \(3\Delta t\), and so forth, store all the velocities in the array.
                         </li> <br>
+                        <li>Return the array of velocities</li>
                     </ol>
                 </ul>
             </div>
             <div class="half-column">
-                <h3>Side Quest 2:</h3>
+                <h3><span class="mid">★★ </span>Side Quest 2:</h3>
                     <ul class="bom">
-                        <li>Using matplotlib and your code from the previous challenge, plot the array you created in Side Quest 1. You can find the example code in the python_challenges folder. </li>
-                        <li>What do you notice about the derivative function? Those of you who have taken calculus will know why it looks like it does.</li>   
+                        <li>Using matplotlib and the array from Side Quest 1, plot the velocity</li>
+                        <li>What do you notice about our derivative function?</li>   
                     </ul>
                     <h3>Method:</h3>
                     <ul class="bom">
@@ -120,9 +121,9 @@
                             <span class="indent"> \(x = 3t^2 + 5t + 7\)</span>
                         </li> <br>
                         <ol>
-                            <li>
-                                Use the code example in the python_challenges folder to create your own plot. Attempt to add your new plot to the existing graph.
-                            </li> <br>
+                            <li>Use <span class="code">matplotlib_example.py</span> to create your own plot</li>
+                            <br>
+                            <li>See if you can add your new plot to the existing graph</li>
                         </ol>
                     </ul>
             </div>
@@ -134,10 +135,10 @@
             <div class="left-column">
                 <h3>Main Quest:</h3>
                 <ul class="bom">
-                    <li>Create a function that finds the distance traveled at a particular point in time of an object's trajectory, given a particular function for the velocity.</li>
+                    <li>Create a function that finds the distance traveled given the polynomial for the velocity.</li>
                     <ul>
-                        <li>The function should pass in THREE arguments: the start time of interest (tau1), the end time of interest (tau2), and the delta-t (dt)</li>
-                        <li>Your code should return a single value, the distance/interal</li>
+                        <li>The function should pass in THREE arguments: the start time of interest \(tau_1\), the end time of interest (tau2), and the delta-t (dt)</li>
+                        <li>Your code should return a single value, the distance/interval</li>
                         <li>For this activity, set the time interval of interest to be from 0 to 3 seconds, and delta-t, dt, to 0.5 seconds.</li>
                     </ul>    
                 </ul>
@@ -148,7 +149,7 @@
                     <li>Using the function:
                         <span class="indent"> \(v = 6t + 5\)</span>
                     </li> <br>
-                    <ol> <!-- --> <!-- -->
+                    <ol> 
                         <li>
                             Determine how many rectangles will be calculated under the curve. Use this number to define the upper limit of the range for the iterator in your loop. (If you are confident, try writing an <i>expression</i> for how many rectangles are under the curve; if delta-t changes, the number )
                         </li> <br>
@@ -182,11 +183,7 @@
                 <figure>
                     <img class="view" src="images/mainquest2.png">
                 </figure>
-                <body>
-                    <span class="center">
-                        From tau1 = 0s to tau2 = 3s, and with dt = 0.5s, the calculated integral is...
-                    </span>
-                </body> <!--help!-->
+                <figcaption>From tau1 = 0s to tau2 = 3s, and with dt = 0.5s, the calculated integral is...</figcaption>
             </div>
         </div>
         <div class="container thr">
@@ -246,15 +243,3 @@
         </script>
     </body>
 </html>
-
-<!-- to add another challenge: add this template inside the right-column or
-half-column div containing the other levels -->
-<!-- <h3>Level :</h3>
-    <ul>
-        <li></li>
-        <li></li>
-        <ul>
-            <li></li>
-            <li></li>
-        </ul>
-    </ul> -->
