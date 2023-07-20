@@ -14,7 +14,96 @@
         <div>
             <h1>Sensors Challenges 2</h1>
         </div>
-       <h3>Coming Soon ;)</h3>
-       <h2>Spoilers: these challenges will require calculus</h2>
+        <div class="welcome">
+            <h2>Recommend complete <span class="ez">★ </span> from Sensor Challenges 1 First, but do as you wish</h2>
+            <h3><a href="sensorchallenges1.html" target="_blank">Link to Sensor Challenges 1</a></h3>
+            <h3>You'll have solutions to reference next week :)</h3>
+        </div>
+        <hr>
+        <h2 class="center">Calculating Distances in Meters</h2>
+       <div class="container">
+            <div class="left-column">
+                <h3>You now have learned the math:P</h3>
+                <ul>
+                    <li>Until now, the challenges have required stopping or
+                    changing the robot's movement based on encoder counts alone,
+                    but now that we've learned the math, we can use actual distances in meters!</li>
+                    <li>This means we can travel specific distances or MEASURE distances based on encoder counts</li>
+                </ul>
+            </div>
+            <div class="right-column">
+                <h3><span class="ez">★ </span>Stop after 1 Meter</h3>
+                <ul>
+                    <li>Modify your <span class="italic">stop after 200 counts</span> code to stop after 1 Meter</li>
+                    <li>Use your function that converts distances to counts:)</li>
+                </ul>
+                <h3><span class="mid">★★ </span>Measure a Distance</h3>
+                <ul>
+                    <li>Write a new <span class="functions">function</span> that converts counts to distance</li>
+                    <li>Modify your <span class="italic">hit the brakes</span> code to measure how far you traveled before you stopped</li>
+                </ul>
+                <h3><span class="yikes">★★★ </span>Play Fetch🐾</h3>
+                <ul>
+                    <li>Travel forwards until the lidar detects an object</li>
+                    <li><span>Calculate</span> how far you traveled before you detected the object</li>
+                    <li>Go backwards to where you started</li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <h2 class="center">Integrating IMU Data</h2>
+        <div class="container">
+            <div class="left-column">
+                <h3>Time to use your integrator!</h3>
+                <ul>
+                    <li>Some things to keep track of:</li>
+                    <ul>
+                        <li>May need to modify the angle based on the motor's momentum</li>
+                        <li>Can also reduce sampling rate</li>
+                        <li>If the direction you're spinning is positive or negative</li>
+                    </ul>
+                </ul>
+            </div>
+            <div class="right-column">
+                <h3><span class="ez">★ </span>Compare Encoders vs IMU for 90 Degree Turns</h3>
+                <ul>
+                    <li>Keep one wheel still (like you did in Challenges 1)</li>
+                    <li>Rotate 90 degrees, then stop</li>
+                    <li>Compare the performance of using hard-coded counts per turn to integrating the IMU data</li>
+                    <li>In which applications is one <span class="italic">better</span> than the other?</li>
+                    <li>Unfortunately, the best option is using feedback control, we will get there;)</li>
+                </ul>
+                <h3><span class="yikes">★★★ </span>Path Following Upgraded</h3>
+                <ul>
+                    <li>Use button to start wheels</li>
+                    <li>Travel forward 0.5 meters</li>
+                    <li>Make a 90 degree right turn (using IMU integrator)</li>
+                    <li>Travel forward 1.5 meters</li>
+                    <li>Stop the robot</li>
+                    <li><span class="bonus">bonus: </span>blink the led to
+                    celebrate completing the path!</li>
+                </ul>
+                <h3><span class="yikes">★★★ </span>Integrate Linear Velocity From Acceleration</h3>
+                <ul>
+                    <li>Modify your integrator to integrate the acceleration from the IMU</li>
+                    <li>For now, print just the velocity</li>
+                    <li>Do your values make sense?</li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="container">
+            <div class="left-column">
+    
+            </div>
+            <div class="right-column">
+    
+            </div>
+
+        </div>
+
+
+
+
     </body>
 </html>

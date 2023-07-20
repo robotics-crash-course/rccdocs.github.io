@@ -163,3 +163,7 @@ hr{
 .emph{
     color:darkslateblue;
 }
+
+.italic{
+    font-style: italic;
+}
