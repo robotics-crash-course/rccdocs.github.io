@@ -59,7 +59,7 @@
                         <li>Find the distance traveled at time \(tau\) </li> <br>
                         <li>Find the distance traveled at time \((tau + \Delta t)\)</li> <br>
                         <li>Find the slope of the line that spans the two points</li> <br>
-                        <li>Return the estimated<span class="emph">velocity</span></li>
+                        <li>Return the estimated<span class="emph"> velocity</span></li>
                     </ol>
                     <br>
                     <li>Call the <span class="functions">function</span> again, but this time with \(\Delta t\) = 0.1 </li>
@@ -72,11 +72,6 @@
                     <img class="view" src="images/mainquest1.png">
                 </figure>
                 <figcaption>At \(tau\) = 0 and \(\Delta t\) = 0.5s, the calculated derivative is...</figcaption>
-                <!-- <body>
-                    <span class="center">
-                        
-                    </span>
-                </body> help! -->
             </div>
         </div>
         <!--Differentiation: Side Quest-->
@@ -89,7 +84,7 @@
                 <ul class="bom">
                     <li>Create a <span class="functions">python function</span> that finds the <span class="emph">velocity</span> at many points in time and store them in an <span class="arrays">array</span></li>
                     <ul>
-                        <li>The <span class="functions">function</span> should pass in THREE arguments: the start time, the end time, and the timestep, \(\Delta t\)</li>
+                        <li>The <span class="functions">function</span> should pass in THREE arguments: the <span class="code">start_time</span>, the <span class="code">end_time</span>, and the <span class="code">delta_t</span>, \(\Delta t\)</li>
                         <li>Calculate the velocities from t = 0s to t = 3s using a \(\Delta t\) of 0.001s (hint: your array should have 3000 elements)</li>
                     </ul>    
                 </ul>
@@ -117,9 +112,6 @@
                     </ul>
                     <h3>Method:</h3>
                     <ul class="bom">
-                        <li>Using the function:
-                            <span class="indent"> \(x = 3t^2 + 5t + 7\)</span>
-                        </li> <br>
                         <ol>
                             <li>Use <span class="code">matplotlib_example.py</span> to create your own plot</li>
                             <br>
@@ -133,48 +125,34 @@
         <!--Integration: Main Quest-->
         <div class="container">
             <div class="left-column">
-                <h3>Main Quest:</h3>
+                <h3><span class="ez">★ </span>Main Quest:</h3>
                 <ul class="bom">
-                    <li>Create a function that finds the distance traveled given the polynomial for the velocity.</li>
+                    <li>Create a <span class="functions">Python function</span> that finds the distance traveled given the polynomial describing velocity.</li>
                     <ul>
-                        <li>The function should pass in THREE arguments: the start time of interest \(tau_1\), the end time of interest (tau2), and the delta-t (dt)</li>
-                        <li>Your code should return a single value, the distance/interval</li>
-                        <li>For this activity, set the time interval of interest to be from 0 to 3 seconds, and delta-t, dt, to 0.5 seconds.</li>
+                        <li>The function should pass in THREE arguments: the <span class="code">start_time</span>, the <span class="code">end_time</span>, and </li>
+                        <li>Return a single value, the distance traveled</li>
+                        <li>For this activity, set the time interval to be from 0 to 3 seconds, and \(\Delta t\) to 0.5 seconds.</li>
                     </ul>    
                 </ul>
             </div>
             <div class ="half-column">
                 <h3>Method:</h3>
                 <ul class="bom">
-                    <li>Using the function:
+                    <li>Using the polynomial:
                         <span class="indent"> \(v = 6t + 5\)</span>
                     </li> <br>
                     <ol> 
+                        <li>Determine how many \(\Delta t\) are in the time interval</li> <br>
+                        <li> Use the Right-Hand Riemann sum method</li> <br>
+                            <ul>
+                                <li>Hint: In the loop, calculate the area of each rectangle</li>
+                                <li>Sum all of the areas to estimate the total distance traveled</li>
+                            </ul>
+                            <br>
+                        <li>Return your estimation </li> <br>
+                        <li> Change \(\Delta t\) to 0.1. Change it to 0.001. What do you observe?</li> <br>
                         <li>
-                            Determine how many rectangles will be calculated under the curve. Use this number to define the upper limit of the range for the iterator in your loop. (If you are confident, try writing an <i>expression</i> for how many rectangles are under the curve; if delta-t changes, the number )
-                        </li> <br>
-                        <li> 
-                            Use the Right-Hand Riemann sum:
-                            <ol>
-                                <li>
-                                    The first area calculation will be using the minimum value of the range plus delta-t; in our case, it would be 0 + 0.5. Calculate the area of the rectangle, base * height, where the base is delta-t, and the height is v(0+0.5).
-                                </li>
-                                <li>
-                                    Calculate the areas of the other rectangles, using the heights of v(0+2*0.5), v(0+3*0.5, etc.)
-                                </li>
-                                <li>
-                                    Add all the calculated areas up to find the approximation of the area under the curve.
-                                </li>
-                            </ol>
-                        </li> <br>
-                        <li>
-                            Output the integral; this is the amount of distance covered from time t = 0 to t = 3.
-                        </li> <br>
-                        <li>
-                            Change delta-t to 0.1. Change it to 0.001. What do you notice?
-                        </li> <br>
-                        <li>
-                            Notice that, as opposed to the differentiation quests, the integral isn't AT a particular point in time, but rather BETWEEN two points in time. Try changing the time intervals to 0s to 1s, and 1s to 3s. See if it adds up to your original estimation. 
+                            Notice that as opposed to the differentiation quests, the integral isn't AT a particular point in time, but rather BETWEEN two points in time. Try changing the time intervals to 0s to 1s, and 1s to 3s. See if it adds up to your original estimation. 
                         </li> <br>
                     </ol>
                 </ul>
@@ -183,20 +161,17 @@
                 <figure>
                     <img class="view" src="images/mainquest2.png">
                 </figure>
-                <figcaption>From tau1 = 0s to tau2 = 3s, and with dt = 0.5s, the calculated integral is...</figcaption>
+                <figcaption>The estimated distance traveled is...</figcaption>
             </div>
         </div>
         <div class="container thr">
             <div class="left-column">
-                <h3>Side Quest 1:</h3>
+                <h3>If your bravery hasn't wandered >:)</h3>
+            </div>
+            <div class="half-column">
+                <h3><span class="mid">★★ </span> Side Quest 1:</h3>
                 <ul class="bom">
-                    <li>Create a function that stores the current total area in an array as the loop iterates through the number of rectangles.</li>
-                    <ul>
-                        <li>The function should pass in THREE arguments: the time interval, describes by tau1 and tau2, and the delta-t (dt)</li>
-                        <li>Your code should iterate and find the area of the first rectangle, the first two rectangles, the first three rectangles, etc. and stores the growing total area as elements in an array.</li>
-                        <li>Calculate the distances from t = 0s to t = 3s using a delta-t of 0.001s (basically your array should have 3000 elements)</li>
-                        <li>In other words, the array should be a running total of the distance traveled by the robot.</li>
-                    </ul>    
+                    <li>Create a <span class="functions">function</span> that will store the accumulated area at each timestep in an array</li>
                 </ul>
                 <h3>Method:</h3>
                 <ul class="bom">
@@ -220,21 +195,10 @@
                 </ul>
             </div>
             <div class="half-column">
-                <h3>Side Quest 2:</h3>
+                <h3><span class="mid">★★ </span> Side Quest 2:</h3>
                     <ul class="bom">
-                        <li>Using matplotlib and your code from the previous challenge and a veryyyyy small delta-t, plot the array you created in Side Quest 1. You can find the example code in the python_challenges folder. </li>
-                        <li>What do you notice about the integral function? Those of you who have taken calculus will know why it looks like it does.</li>   
-                    </ul>
-                    <h3>Method:</h3>
-                    <ul class="bom">
-                        <li>Using the function:
-                            <span class="indent"> \(x = 3t^2 + 5t + 7\)</span>
-                        </li> <br>
-                        <ol>
-                            <li>
-                                Use the code example in the python_challenges folder to create your own plot. Attempt to add your new plot to the existing graph.
-                            </li> <br>
-                        </ol>
+                        <li>Using matplotlib and the array from Side Quest 1, plot the distance traveled</li>
+                        <li>What do you notice about the results?</li>   
                     </ul>
             </div>
         </div>
