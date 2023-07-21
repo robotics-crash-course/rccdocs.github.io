@@ -138,3 +138,32 @@ hr{
     color:blueviolet;
     font-style: italic;
 }
+
+.solution{
+    font-style: italic;
+    color:darkgray;
+}
+
+.ez{
+    color:green;
+}
+
+.mid{
+    color:orange;
+}
+
+.yikes{
+    color:red;
+}
+
+.pain{
+    color:maroon;
+}
+
+.emph{
+    color:darkslateblue;
+}
+
+.italic{
+    font-style: italic;
+}

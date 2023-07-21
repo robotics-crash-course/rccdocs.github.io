@@ -356,7 +356,7 @@
                     <ol>
                         <li>Turns on Pico's LED</li>
                         <li>Sets up i2c on the Pico</li>
-                        <li>Lidar's struct</li>
+                        <li>Lidar's class setup</li>
                         <li>Sets to i2c1</li>
                         <li>In <span class="code">while()</span>loop:</li>
                         <ol>
@@ -380,7 +380,7 @@
                     
                         rcc_init_i2c(); //setup pico i2c
 
-                        VL53L0X lidar; //struct
+                        VL53L0X lidar; //class
                         rcc_init_lidar(&lidar); //setup lidar on i2c1
                     
                         while(true)
@@ -419,7 +419,7 @@
                     <ol>
                         <li>Turns on Pico's LED</li>
                         <li>Setup i2c</li>
-                        <li>Sets up imu struct</li>
+                        <li>Sets up imu class</li>
                         <li>Begins communication with imu</li>
                         <li>Calibrates sensor</li>
                         <li>In <span class="code">while()</span>loop:</li>
@@ -444,7 +444,7 @@
                 
                     rcc_init_i2c(); //setup i2c
 
-                    MPU6050 imu; //struct
+                    MPU6050 imu; //class
                     imu.begin(i2c1); //adds to i2c1
                     imu.calibrate(); //hold robot still
                 
@@ -486,7 +486,7 @@
                     <li>Within <span class="code">main()</span>function:</li>
                     <ol>
                         <li>Turns on Pico's LED</li>
-                        <li>Sets up struct for left and right</li>
+                        <li>Sets up classes for left and right</li>
                         <li>In <span class="code">while()</span>loop:</li>
                         <ol>
                             <li>Gets count for both wheels</li>
@@ -508,8 +508,8 @@
                     cyw43_arch_init(); //setup 
                     cyw43_arch_gpio_put(0,1); //led on
                 
-                    Left_Odom left; //struct
-                    Right_Odom right; //struct
+                    Left_Odom left; //class
+                    Right_Odom right; //class
 
                     while(true)
                     {

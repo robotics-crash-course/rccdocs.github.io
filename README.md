@@ -22,3 +22,11 @@
 ## sensor_challenges/
 
 `sensorchallenges1.html`: First Set of Practical Sensor Challenges
+
+`sensorchallenges2.html`: Sensor Challenges with Calculus
+
+## python_challenges/
+
+`python.html`: Calculus with Python Challenges
+
+
