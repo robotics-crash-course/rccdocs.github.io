@@ -208,7 +208,7 @@
                     <ul><li><span class="solution">06-rotate-robot.cpp</span></li></ul>
                     
                 </ol>
-                <h3><span class="ez">★ </span>Rotate robot 90 Degrees</h3>
+                <h3><span id="rotate90" class="ez">★ </span>Rotate robot 90 Degrees</h3>
                 <ol>
                     <li>Give only one wheel power</li>
                     <li>Experimentally determine number of counts to rotate 90
@@ -347,16 +347,16 @@
                     <li>Consider adjusting your scale factor to minimize the angular velocity;)</li>
                     <ul><li><span class="solution">02-testing-scalefactor.cpp</span></li></ul>
                 </ol>
-
-                <h3><span class="pain">★★★★ </span>Intro to Control Theory</h3>
+                <h3 id="controltheory"><span class="yikes">★★★ </span>Intro to Control Theory</h3>
                 <ul>
-                    <li>Rotate the robot at 90 degrees per second</li>
+                    <li>Rotate the robot at a desired angular velocity</li>
                     <li>Lots of hints for this one:</li>
                     <ol>
                         <li>Use button to start motors at some <span class="code">base_power</span>, something slow, just above the deadband</li>
+                        <li>Set a desired angular velocity as a float</li>
                         <li>In a loop:</li>
                         <ol>
-                        <li>Calculate an <span class="code">error</span> between 90.0 and the <span class="code">imu.getAngVelZ()</span> reading</li>
+                        <li>Calculate an <span class="code">error</span> between desired angular velocity and the actual value from <span class="code">imu.getAngVelZ()</span></li>
                         <li>Add a <span class="code">power_boost</span> to the
                         motor's power based on the calculated error. Be careful
                         though, <span class="code">MotorPower()</span>takes an integer input and the <span class="code">error</span>
@@ -366,11 +366,11 @@
                             <li><span class="code">power_boost = static_cast&lt;int&gt;(kp*error)</span></li>
                         </ul>
                         <li>where <span class="code">kp</span> is a float (this is called a proportional gain in controls)</li>
-                        <li>Add the <span class="code">power_boost</span> to <span class="code">base_power</span> and see if the robot can reach 90 deg/sec</li>
+                        <li>Add the <span class="code">power_boost</span> to <span class="code">base_power</span></li>
                     </ol>
                     </ol>
-                    <li>To know if you're at 90 deg/sec, can turn off the led if the error is below some value</li>
-                    <ul><li><span class="solution">coming soon</span></li></ul>
+                    <li>To know if error has been eliminated, can turn off the led if the error is below some tolerance</li>
+                    <ul><li><span class="solution">03-control.cpp</span></li></ul>
                 </ul>
             </div>
         </div>
