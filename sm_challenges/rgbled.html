@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>RGB Control</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../html_pages/style.css">
+        <link rel="stylesheet" href="../html_pages/scripts/xcode.min.css">
+        <script src="../html_pages/scripts/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script>
+    
+    </head>
+    <body>
+        <div>
+            <h1><span style="color:red;">R</span><span style="color:green;">G</span><span style="color:blue;">B</span> Led Control</h1>
+        </div>
+        <div class="welcome">
+            <ul>
+                <li>Combine your newfound hardware skills to write functions that control LEDs!</li>
+                <li>In this Challenge:</li>
+                <ul>
+                    <li>Setup breadboard for 3 LED's or 1 tricolor led</li>
+                    <li>Create led struct</li>
+                    <li>Write functions to setup & enable PWM</li>
+                    <li>Build a state machine to change the colors</li>
+                </ul>
+            </ul>
+        </div>
+        <hr>
+        <h2 class="center">Hardware Setup:</h2>
+        <div class="container">
+            <div class="left-column">
+                <h3>Get a breadboard ready:)</h3>
+                <ol>
+                    <li>Determine appropriate resistance values</li>
+                    <li>Attach to any free gpio pins on your raft</li>
+                    <li>Use 3 different color leds ;)</li>
+                </ol>
+            </div>
+            <div class="right-column">
+                <figure>
+                    <img class="halfview" src="images/circuit-setup.png" alt="circuit diagram">
+                </figure>
+            </div>
+        </div>
+        <hr>
+        <h2 class="center">Software Setup</h2>
+        <div class="container">
+            <div class="new-column">
+                <h3>Set up LED struct & functions</h3>
+                <p><span class="solution">Reference: rcc-pico/dev/pico/include/pwm_helper.h</span></p>
+                <ol>
+                    <li>Create new struct RGBLED of 3 Servo structs, like Motor</li>
+                    <li>Create LEDInit() function, like MotorInit()</li>
+                    <li>Create LEDOn() function, like MotorOn()</li>
+                    <li>Create LEDPower() function, like MotorPower()</li>
+                    <span class="solution">hint: use freq around 500 when calling LEDPower()</span>
+                </ol>
+                <!-- <br> -->
+                <h3>Test function</h3>
+                <ul>
+                    <li>Is your function able to set power to all 3 leds?</li>
+                </ul>
+                <!-- <br> -->
+                <h3>Build State Machine</h3>
+                <p>Options:</p>
+                <ul>
+                    <li>Have each led's brightness fade in and out over time</li>
+                    <li>Add LED's to follow-at-a-distance or target-acquired state machine</li>
+                    <li>Have LED's get brighter when object is closer to lidar</li>
+                    <li>Have LED's track angular velocity or encoder readings</li>
+                    <li>Get creative with it:)</li>
+                </ul>
+
+            </div>
+            <div class="new-column">
+                <div class="new-column">
+                    <img src="images/3leds.gif" alt="3 led's" style="max-width:60%;">
+                    <br>
+                    <img src="images/tricolor.gif" alt="tricolor led" style="max-width:20%;">
+                    <br>
+                    <figcaption>Same timing on 3 LED's and Tricolor:)</figcaption>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+    </body>
+</html>
