@@ -63,9 +63,20 @@ gpio_put(BLUE, false); //off</code></pre></li>
 
 
                 <h2>Driving LED with PWM</h2>
-                <h3>Set up LED struct & functions</h3>
-                <p><span class="solution">Reference: rcc-pico/dev/pico/include/pwm_helper.h</span></p>
+                <h3>Set up LED struct & functions:</h3>
+                <p>Create library file here: rcc-pico/dev/pico/include/led_pwm.h</p>
                 <ol>
+                    <li>Have this at top of file:</li>
+<pre><code>
+#include "hardware/pwm.h"
+#include "pico/stdlib.h"
+#include &lt;math.h&gt;
+#include &lt;stdlib.h&gt;
+#include "rcc_pins.h"
+
+using namespace std;
+</code></pre>
+                    <p><span class="solution">Reference: rcc-pico/dev/pico/include/pwm_helper.h</span></p>
                     <li>Create new struct RGBLED of 3 Servo structs, like Motor</li>
                     <li>Create LEDInit() function, like MotorInit()</li>
                     <li>Create LEDOn() function, like MotorOn()</li>
@@ -75,6 +86,8 @@ gpio_put(BLUE, false); //off</code></pre></li>
                 <!-- <br> -->
                 <h3>Test function</h3>
                 <ul>
+                    <li>Within your .cpp file, include your led driver library:</li>
+<pre><code>#include "led_pwm.h"</code></pre>
                     <li>Is your function able to set power to all 3 leds?</li>
                 </ul>
                 <!-- <br> -->
