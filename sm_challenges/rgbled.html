@@ -50,6 +50,19 @@
         <h2 class="center">Software Setup</h2>
         <div class="container">
             <div class="new-column">
+                <h2>Turning LED on & off with gpio pin</h2>
+                <ol>
+                    <li>define pin led is attached to: 
+                        <pre><code>#define BLUE 0</code></pre></li>
+                    <li>in main, setup gpio as an output: 
+                        <pre><code>gpio_init(BLUE); 
+gpio_set_dir(BLUE, true); //output</code></pre></li>
+                    <li>in while loop, turn on/off led: <pre><code>gpio_put(BLUE, true); //on
+gpio_put(BLUE, false); //off</code></pre></li>
+                </ol>
+
+
+                <h2>Driving LED with PWM</h2>
                 <h3>Set up LED struct & functions</h3>
                 <p><span class="solution">Reference: rcc-pico/dev/pico/include/pwm_helper.h</span></p>
                 <ol>
@@ -66,7 +79,7 @@
                 </ul>
                 <!-- <br> -->
                 <h3>Build State Machine</h3>
-                <p>Options:</p>
+                <!-- <p>Options:</p> -->
                 <ul>
                     <li>Have each led's brightness fade in and out over time</li>
                     <li>Add LED's to follow-at-a-distance or target-acquired state machine</li>
