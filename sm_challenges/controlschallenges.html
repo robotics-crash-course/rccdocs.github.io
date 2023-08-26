@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Controls Challenges</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../html_pages/style.css">
+        <link rel="stylesheet" href="../html_pages/scripts/xcode.min.css">
+        <script src="../html_pages/scripts/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script>
+    
+    </head>
+    <body>
+        <div>
+            <h1>Challenges using Controls</h1>
+        </div>
+        <div class="welcome">
+            <p>Now that we can control the robot to drive straight, can finally complete some of the previous challenges :)</p>
+        
+        </div>
+        <hr>
+        <h2 class="center">Setting up PID Controller</h2>
+        <div class="container">
+            <div class="left-column">
+                <h3>Driving based on angular velocity</h3>
+                <ol>
+                    <li>Setup controller config struct</li>
+                    <li>Init i2c first</li>
+                    <li>Choose values for controller config</li>
+                    <li>Create controller class based on config</li>
+                    <li>Setup controller/timing variables</li>
+                    <li>Turn on pico led last</li>
+                    <li>Inside while loop:</li>
+                    <ol>
+                        <li>Update current time</li>
+                        <li>Check if timestep has passed</li>
+                        <li>Get sensor data</li>
+                        <li>Calculate controller output based on desired value</li>
+                        <li>Set motor power based on controller output</li>
+                    </ol>
+                </ol>
+            </div>
+            <div class="right-column">
+<pre><code>
+    #include "rcc_stdlib.h"
+    using namespace std;
+    
+    //setup instance of config struct
+    PID_control_config_t config;
+    
+    int main(){
+        stdio_init_all();
+        cyw43_arch_init();
+        sleep_ms(1500);
+    
+        //init i2c first
+        rcc_init_i2c(); 
+        MPU6050 imu;
+        imu.begin(i2c1);
+        imu.calibrate();
+    
+        Motor motors;
+        MotorInit(&motors, RCC_ENA, RCC_ENB, 20000);
+        MotorsOn(&motors);
+    
+        //set values for config
+        config.kp = 1.5; 
+        config.ki = 0;
+        config.kd = 0;
+        config.ts = 0.01; // 1ms
+        config.sigma = 0.1;
+        config.lowerLimit = -50;
+        config.upperLimit = 50;
+        config.antiWindupEnabled = true;
+    
+        //create controller class based on config
+        PID_control controller(config);
+    
+        //motor power variables setup
+        int base_power = 50;
+        int output; 
+    
+        //timing variables setup
+        uint32_t current_time, previous_time;
+        current_time = time_us_32();
+    
+        //pico led on when done setup
+        cyw43_arch_gpio_put(0,1); 
+    
+        while(true){
+            //update current time
+            current_time = time_us_32();
+    
+            //if config's timestep has passed
+            if((current_time - previous_time) >= config.ts*1e6){
+    
+                //get data from sensors
+                imu.update_pico();
+                //calculate controller output:
+                    //first input is desired value
+                    //second input is actual value
+                output = controller.pid(0.0, imu.getAngVelZ());
+    
+                //set motor power based on controller output
+                MotorPower(&motors, (base_power-output), (base_power + output));
+
+                //reset previous time
+                previous_time = current_time;
+            }
+        }
+    }
+</code></pre>
+            </div>
+        </div>
+        <hr>
+        <h2 class="center">Challenges</h2>
+        <div class="container">
+            <div class="left-column">
+                <h3>From Sensor Challenges 1:</h3>
+            </div>
+            <div class="right-column">
+                <h3><span class="ez">★ </span>Travel straight for a distance</h3>
+                <ul>
+                    <li>Use controller to drive straight, then stop based on encoder readings</li>
+                    <li>Level 1: Stop the robot when BOTH encoders reach 200 counts</li>
+                    <li>Level 2: Stop the robot after traveling 1 meter</li>
+                </ul>
+                <h3><span class="mid">★★ </span>Path Following</h3>
+                <ul>
+                    <li>Travel forward *using controller* 50 encoder counts</li>
+                    <li>Make a 90 degree right turn</li>
+                    <li>Travel forward 100 encoder counts</li>
+                    <li>Stop the robot</li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <div class="left-column">
+                <h3>From Sensor Challenges 2:</h3>
+            </div>
+            <div class="right-column">
+                <h3><span class="yikes">★★★ </span>Play Fetch🐾</h3>
+                <ul>
+                    <li>Travel forwards until the lidar detects an object</li>
+                    <li><span>Calculate</span> how far you traveled before you detected the object</li>
+                    <li>Go backwards to where you started</li>
+                </ul>
+                <h3><span class="yikes">★★★ </span>Path Following</h3>
+                <ul>
+                    <li>Travel forward *using controller* 0.5 meters</li>
+                    <li>Make a 90 degree right turn</li>
+                    <li>Travel forward 1.5 meters</li>
+                    <li>Stop the robot</li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <div class="left-column">
+                <h3>From State Machine Challenges:</h3>
+            </div>
+            <div class="right-column">
+                <h3><span class="yikes">★★★ </span>Travel in a Square</h3>
+                <ul>
+                    <li>Create states for driving forward and making turns</li>
+                    <li>Travel 1 meter between each turn</li>
+                    <li class="solution">hint: use <span class="code">setZero()</span> to reset encoder counts</li>
+                    <li>There will be a prize if you can go more than 2x around the square and still land in the box;)</li>
+                </ul>
+                <h3><span class="yikes">★★★ </span>Parking Between Objects</h3>
+                <ul>
+                    <li>Order of events:</li>
+                    <ol>
+                        <li>Point servo right, travel forwards</li>
+                        <li>If "see" first object, take note</li>
+                        <li>Keep going forward until "see" second object</li>
+                        <li>Travel backwards until halfway between objects</li>
+                        <li>Make right turn, pulling into spot</li>
+                        <li>Stop before crashing into anything</li>
+                    </ol>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <h2 class="center">More Fun Ideas</h2>
+        <div class="container">
+            <div class="left-column">
+                <p>Hopefully these will help inspire final projects:)</p>
+            </div>
+            <div class="right-column">
+                <h3><span class="mid">★★ </span>Orientation Controller</h3>
+                <ul>
+                    <li>Setup controller so that it integrates the angular velocity to get orientation (angle)</li>
+                    <li class="solution">theta+= imu.getAngVelZ()*config.ts;</li>
+                    <li>Make turns by changing desired orientation or theta</li>
+                    <li>Example, make desired theta 90.0 to make a turn</li>
+                </ul>
+                <h3><span class="yikes">★★★ </span>Painful Pointers Practice</h3>
+                <ul>
+                    <li class="solution">well, hopefully not too much pain...</li>
+                    <li>Set up a function that drives the robot straight at an input orientation (angle)</li>
+                    <li><span class="code">void drive_orientation(/*a bunch of pointers*/, float orientation){}</span></li>
+                    <li>Goal of writing this function is to say "drive forward at 30 degrees", or wherever:)</li>
+                    <li>Hint: you'll need to setup pointers to a few variables and dereference them inside the function</li>
+                    <li class="solution">Jeannette has soln on their computer, gotta check with Andy before posting XD</li>
+                    <li class="solution">Want to probably convert to a struct pointer...</li>
+                </ul>
+            </div>
+        </div>
+
+    </body>
+</html>

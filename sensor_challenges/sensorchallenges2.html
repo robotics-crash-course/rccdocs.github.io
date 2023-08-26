@@ -15,9 +15,9 @@
             <h1>Sensors Challenges 2</h1>
         </div>
         <div class="welcome">
-            <h2>Recommend complete <span class="ez">★ </span> from Sensor Challenges 1 First, but do as you wish</h2>
+            <h2>Recommend complete <span class="ez">★ </span> from Sensor Challenges 1 first, but do as you wish</h2>
             <h3><a href="sensorchallenges1.html" target="_blank">Link to Sensor Challenges 1</a></h3>
-            <h3>You'll have solutions to reference next week :)</h3>
+            <h3><span class="solution">Solutions are under rcc-pico/dev/pico/challenges/04-sensor2/solutions</span></h3>
         </div>
         <hr>
         <h2 class="center">Calculating Distances in Meters</h2>
@@ -36,17 +36,45 @@
                 <ul>
                     <li>Modify your <span class="italic">stop after 200 counts</span> code to stop after 1 Meter</li>
                     <li>Use your function that converts distances to counts:)</li>
+                    <li><span class="solution">01-stop1meter.cpp</span></li>
                 </ul>
                 <h3><span class="mid">★★ </span>Measure a Distance</h3>
                 <ul>
                     <li>Write a new <span class="functions">function</span> that converts counts to distance</li>
                     <li>Modify your <span class="italic">hit the brakes</span> code to measure how far you traveled before you stopped</li>
+                    <li><span class="solution">02-measure.cpp</span></li>
                 </ul>
-                <h3><span class="yikes">★★★ </span>Play Fetch🐾</h3>
-                <ul>
+                <h3 class="strike"><span class="yikes">★★★ </span>Play Fetch🐾</h3>
+                <ul class="strike">
                     <li>Travel forwards until the lidar detects an object</li>
                     <li><span>Calculate</span> how far you traveled before you detected the object</li>
                     <li>Go backwards to where you started</li>
+                    <li><span class="solution">03-fetch.cpp</span></li>
+                </ul>
+                <h3><span class="mid">★★ </span>Distance Along Arcs</h3>
+                <ul>
+                    <li>Write a <span class="functions">function</span> that estimates the length of an arc</li>
+                    <li class="solution">If we keep one wheel still, any arc traveled will be on a circle of known radius</li>
+                    <li class="solution">This radius is the same as the distance between the wheels</li>
+                    <li class="solution">The distance between the wheels is called the track width</li>
+                    <li>For our robot, use <span class="code">#define TRACK_WIDTH 0.131 //meters</span></li>
+                    <li>The function should input the amount of degrees you want to travel</li>
+                    <li>The function should return the distance in meters the one wheel will travel</li>
+                    <br>
+                    <li>Use your <span class="code">countsToDistance()</span> function</li>
+                    <li>Can test if your function works with a 90 degree turn</li>
+                    <li><span class="solution">04-arcdistance.cpp</span></li>
+                </ul>
+                <h3 class="strike"><span class="yikes">★★★ </span>Path Following Upgraded</h3>
+                <ul class="strike">
+                    <li>Use button to start wheels</li>
+                    <li>Travel forward 0.5 meters</li>
+                    <li>Make a 90 degree right turn</li>
+                    <li>Travel forward 1.5 meters</li>
+                    <li>Stop the robot</li>
+                    <li><span class="bonus">bonus: </span>blink the led to
+                    celebrate completing the path!</li>
+                    <li><span class="solution">05-pathfollowupgraded.cpp</span></li>
                 </ul>
             </div>
         </div>
@@ -67,27 +95,11 @@
             <div class="right-column">
                 <h3><span class="ez">★ </span>Compare Encoders vs IMU for 90 Degree Turns</h3>
                 <ul>
-                    <li>Keep one wheel still (like you did in Challenges 1)</li>
-                    <li>Rotate 90 degrees, then stop</li>
-                    <li>Compare the performance of using hard-coded counts per turn to integrating the IMU data</li>
+                    <li>Keep one wheel still</li>
+                    <li>Goal: Rotate robot 90 degrees, then stop</li>
+                    <li>Compare the performance of using counts and integrating the IMU data</li>
                     <li>In which applications is one <span class="italic">better</span> than the other?</li>
-                    <li>Unfortunately, the best option is using feedback control, we will get there;)</li>
-                </ul>
-                <h3><span class="yikes">★★★ </span>Path Following Upgraded</h3>
-                <ul>
-                    <li>Use button to start wheels</li>
-                    <li>Travel forward 0.5 meters</li>
-                    <li>Make a 90 degree right turn (using IMU integrator)</li>
-                    <li>Travel forward 1.5 meters</li>
-                    <li>Stop the robot</li>
-                    <li><span class="bonus">bonus: </span>blink the led to
-                    celebrate completing the path!</li>
-                </ul>
-                <h3><span class="yikes">★★★ </span>Integrate Linear Velocity From Acceleration</h3>
-                <ul>
-                    <li>Modify your integrator to integrate the acceleration from the IMU</li>
-                    <li>For now, print just the velocity</li>
-                    <li>Do your values make sense?</li>
+                    <li><span class="solution">01-comparing90turns.cpp</span></li>
                 </ul>
             </div>
 

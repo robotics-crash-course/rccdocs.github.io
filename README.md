@@ -25,6 +25,10 @@
 
 `sensorchallenges2.html`: Sensor Challenges with Calculus
 
+## sm_challenges/
+
+`smchallenges.html`: First Set of State Machine Challenges
+
 ## python_challenges/
 
 `python.html`: Calculus with Python Challenges

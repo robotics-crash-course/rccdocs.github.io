@@ -21,7 +21,6 @@
                 <ul>
                     <li>Apply your newfound c++ abilities by using the sensors and actuators on your robot</li>
                     <li><a href="../html_pages/usingrobot.html" target="_blank">Link to Guide on How to Use Robot</a></li>
-                    <li>Fear not if you don't get through all of these this week, there's no hurry!</li>
                     <li>Note: all of these challenges are pre-calculus and pre-state machines</li>
                     <li>Also checkout the challenges in rcc-pico/dev/pico/challenges :)</li>
                     <li>If you get stuck, ask for help ~before~ just checking solution</li>
@@ -32,8 +31,6 @@
                     <li><span class="ez">★ </span>Checkpoint Challenges: trinket earned when you complete all of these:)</li>
                     <li><span class="mid">★★ </span>Slightly Harder, may require arrays or complex logic</li>
                     <li><span class="yikes">★★★ </span>Advanced c++ skills, such as pointers, required</li>
-                    <li><span class="pain">★★★★ </span>Very non-trivial, we're still working on solutions xD</li>
-
                 </ul>
             </div>
         </div>
@@ -85,7 +82,7 @@
                     <li><span class="mid">★★ </span><span class="arrays">With arrays:</span> Have the button index through an array of integers</li>
                     <ul>
                         <li><span class="solution">03-button-array.cpp</span></li>
-                        <li><span class="mid">★★ </span><span class="bonus">Bonus:</span> use this array to set servo positions</li>
+                        <li><span class="bonus">Bonus:</span> use this array to set servo positions</li>
                         <ul><li><span class="solution">04-button-moves-servo-with-array.cpp</span></li></ul>
                     </ul>
                 </ol>
@@ -155,8 +152,8 @@
                     <li>Stop the robot when BOTH encoders reach 200 counts</li>
                     <ul><li><span class="solution">02-odom-straight-for-200.cpp</span></li></ul>
                 </ol>
-                <h3><span class="mid">★★ </span> Check your scale factor's effectiveness</h3>
-                <ol>
+                <h3 class="strike"><span class="mid">★★ </span> Check your scale factor's effectiveness</h3>
+                <ol class="strike">
                     <li>Create a variable <span class="code">base_power</span></li>
                     <li>Have the base power adjustable by the potentiometer</li>
                     <ul>
@@ -165,8 +162,8 @@
                     <li>Check the effectiveness of your scale factor at different speeds</li>
                     <ul><li><span class="solution">03-odom-scaled.cpp</span></li></ul>
                 </ol>
-                <h3><span class="yikes">★★★ </span>Make a function!</h3>
-                <ol>
+                <h3 class="strike"><span class="yikes">★★★ </span>Make a function!</h3>
+                <ol class="strike">
                     <li>Create a <span class="functions">function</span> for driving straight forwards</li>
                     <li>Inside this function, set the motor power with your scale factor</li>
                     <li>Make a similar function for driving straight backwards</li>
@@ -208,7 +205,7 @@
                     <ul><li><span class="solution">06-rotate-robot.cpp</span></li></ul>
                     
                 </ol>
-                <h3><span class="ez">★ </span>Rotate robot 90 Degrees</h3>
+                <h3><span id="rotate90" class="ez">★ </span>Rotate robot 90 Degrees</h3>
                 <ol>
                     <li>Give only one wheel power</li>
                     <li>Experimentally determine number of counts to rotate 90
@@ -225,8 +222,8 @@
                     counts as a parameter</li>
                     <ul><li><span class="solution">08-forward-function.cpp</span></li></ul>
                 </ol>
-                <h3><span class="yikes">★★★ </span>Path Following</h3>
-                <ol>
+                <h3 class="strike"><span class="yikes">★★★ </span>Path Following</h3>
+                <ol class="strike">
                     <li>Use button to start wheels</li>
                     <li>Travel forward 100 counts</li>
                     <li>Make a 90 degree right turn</li>
@@ -267,7 +264,6 @@
                 </ol>
                 <h3><span class="yikes">★★★ </span>Write a Function:</h3>
                 <ol>
-                    <li>Pick your favorite searching method (either spinning the robot or the servo)</li>
                     <li>Write a <span class="functions">function</span> that when called searches for the object</li>
                     <ul><li><span class="solution">02-lidar-spinning-function.cpp</span></li></ul>
                 </ol>
@@ -306,7 +302,6 @@
                 </ol>
                 <h3><span class="yikes">★★★ </span>Target Acquired</h3>
                 <ol>
-                    <li class="solution">NOTE: this one is tough without a state machine~~ sorry</li>
                     <li>Use the button to start rotating the servo back and forth</li>
                     <li>When an object is detected, stop the servo</li>
                     <li>Store somewhere the "location" of the object <br> Hint: ~left or right</li>
@@ -335,28 +330,28 @@
                 </ul>
             </div>
             <div class="right-column">                
-                <h3><span class="ez">★ </span>Just how fast were we spinning earlier?</h3>
+                <h3><span class="ez">★ </span>Measure Angular Velocity</h3>
                 <ol>
                     <li>Using <span class="code">imu.getAngVelZ()</span> data, figure out how fast you can spin the robot!</li>
                     <ul><li><span class="solution">01-measuring-spin.cpp</span></li></ul>
                 </ol>
 
-                <h3><span class="ez">★ </span>How good is our driving straight scale factor?</h3>
-                <ol>
+                <h3 class="strike"><span class="ez">★ </span>How good is our driving straight scale factor?</h3>
+                <ol class="strike">
                     <li>Drive the robot straight, but this time, monitor the angular velocity</li>
                     <li>Consider adjusting your scale factor to minimize the angular velocity;)</li>
                     <ul><li><span class="solution">02-testing-scalefactor.cpp</span></li></ul>
                 </ol>
-
-                <h3><span class="pain">★★★★ </span>Intro to Control Theory</h3>
+                <h3 id="controltheory"><span class="yikes">★★★ </span>Intro to Control Theory</h3>
                 <ul>
-                    <li>Rotate the robot at 90 degrees per second</li>
+                    <li>Rotate the robot at a desired angular velocity</li>
                     <li>Lots of hints for this one:</li>
                     <ol>
                         <li>Use button to start motors at some <span class="code">base_power</span>, something slow, just above the deadband</li>
+                        <li>Set a desired angular velocity as a float</li>
                         <li>In a loop:</li>
                         <ol>
-                        <li>Calculate an <span class="code">error</span> between 90.0 and the <span class="code">imu.getAngVelZ()</span> reading</li>
+                        <li>Calculate an <span class="code">error</span> between desired angular velocity and the actual value from <span class="code">imu.getAngVelZ()</span></li>
                         <li>Add a <span class="code">power_boost</span> to the
                         motor's power based on the calculated error. Be careful
                         though, <span class="code">MotorPower()</span>takes an integer input and the <span class="code">error</span>
@@ -366,11 +361,11 @@
                             <li><span class="code">power_boost = static_cast&lt;int&gt;(kp*error)</span></li>
                         </ul>
                         <li>where <span class="code">kp</span> is a float (this is called a proportional gain in controls)</li>
-                        <li>Add the <span class="code">power_boost</span> to <span class="code">base_power</span> and see if the robot can reach 90 deg/sec</li>
+                        <li>Add the <span class="code">power_boost</span> to <span class="code">base_power</span></li>
                     </ol>
                     </ol>
-                    <li>To know if you're at 90 deg/sec, can turn off the led if the error is below some value</li>
-                    <ul><li><span class="solution">coming soon</span></li></ul>
+                    <li>To know if error has been eliminated, can turn off the led if the error is below some tolerance</li>
+                    <ul><li><span class="solution">03-control.cpp</span></li></ul>
                 </ul>
             </div>
         </div>

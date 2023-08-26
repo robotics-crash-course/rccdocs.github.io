@@ -86,9 +86,19 @@ figcaption{
     box-sizing: border-box;
 }
 
+.new-column {   
+    flex-basis: 45%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
 
 .view{
     max-width: 100%;
+}
+
+.halfview{
+    max-width: 70%;
 }
 
 .mpu6050{
@@ -166,4 +176,8 @@ hr{
 
 .italic{
     font-style: italic;
+}
+
+.strike{
+    text-decoration: line-through;
 }
