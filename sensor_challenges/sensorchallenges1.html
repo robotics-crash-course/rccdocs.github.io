@@ -22,9 +22,6 @@
                     <li>Apply your newfound c++ abilities by using the sensors and actuators on your robot</li>
                     <li><a href="../html_pages/usingrobot.html" target="_blank">Link to Guide on How to Use Robot</a></li>
                     <li>Note: all of these challenges are pre-calculus and pre-state machines</li>
-                    <li>Also checkout the challenges in rcc-pico/dev/pico/challenges :)</li>
-                    <li>If you get stuck, ask for help ~before~ just checking solution</li>
-                    <li>Solutions are posted under rcc-pico/dev/pico/challenges/03-sensor1/solutions/</li>
                 </ul>
                 <h3>Star Scale</h3>
                 <ul>
@@ -53,7 +50,6 @@
                         <li>This function should return void</li>
                         <li>This function should input the speed of the blinks (in milliseconds)</li>
                         <li>Call this function in <span class="code">main()</span> to see what happens!</li>
-                        <li class="solution">00-blink-led.cpp</li>
                     </ul>
                 </ul>
             </div>
@@ -77,13 +73,10 @@
                     <li><span class="ez">★ </span>Have the button change the servo position</li>
                     <ul>
                         <li>Hint: add 10 to the servo's position if the button is pressed</li>
-                        <li><span class="solution">02-button-moves-servo.cpp</span></li>
                     </ul>
                     <li><span class="mid">★★ </span><span class="arrays">With arrays:</span> Have the button index through an array of integers</li>
                     <ul>
-                        <li><span class="solution">03-button-array.cpp</span></li>
                         <li><span class="bonus">Bonus:</span> use this array to set servo positions</li>
-                        <ul><li><span class="solution">04-button-moves-servo-with-array.cpp</span></li></ul>
                     </ul>
                 </ol>
             </div>
@@ -117,7 +110,6 @@
                     <li>Set both motors to some power above the deadband</li>
                     <ul>
                         <li>Determine which motor is faster based on how your robot moves</li>
-                        <li><span class="solution">motor-characterization.cpp</span></li>
                     </ul>
                 </ol>
             </div>
@@ -140,34 +132,6 @@
                     <li>Use the button to start the motors</li>
                     <li>Give both motors the same power (something above the deadband)</li>
                     <li>Stop the robot when BOTH encoders reach 200 counts</li>
-                    <ul><li><span class="solution">01-odom-stop200.cpp</span></li></ul>
-                </ol>
-                <h3><span class="ez">★ </span>Travel straight for a distance</h3>
-                <ol>
-                    <li>Add a scale factor to either reduce or increase power to
-                    one of the motors, adjust the <span class="code">
-                    scale_factor</span> until it is able to drive straight</li>
-                    <li>Use something like this: <br>
-                    <span class="code">MotorPower(&motors, scale_factor*50, 50);</span><br> 
-                    <li>Stop the robot when BOTH encoders reach 200 counts</li>
-                    <ul><li><span class="solution">02-odom-straight-for-200.cpp</span></li></ul>
-                </ol>
-                <h3 class="strike"><span class="mid">★★ </span> Check your scale factor's effectiveness</h3>
-                <ol class="strike">
-                    <li>Create a variable <span class="code">base_power</span></li>
-                    <li>Have the base power adjustable by the potentiometer</li>
-                    <ul>
-                        <li>Hint: scale potentiometer reading between the deadband and 100 (full power)</li>
-                    </ul>
-                    <li>Check the effectiveness of your scale factor at different speeds</li>
-                    <ul><li><span class="solution">03-odom-scaled.cpp</span></li></ul>
-                </ol>
-                <h3 class="strike"><span class="yikes">★★★ </span>Make a function!</h3>
-                <ol class="strike">
-                    <li>Create a <span class="functions">function</span> for driving straight forwards</li>
-                    <li>Inside this function, set the motor power with your scale factor</li>
-                    <li>Make a similar function for driving straight backwards</li>
-                    <ul><li><span class="solution">04-driving-functions.cpp</span></li></ul>
                 </ol>
             </div>
             <div class="half-column">
@@ -194,7 +158,6 @@
                     class="code">getCount()</span> returns in one rotation of
                     the wheel</li>
                     <li>How many counts for 10 rotations?</li>
-                    <ul><li><span class="solution">05-counts-per-rotation.cpp</span></li></ul>
                 </ol>
                 <h3><span class="ez">★ </span>Rotate robot 360 Degrees</h3>
                 <ol>
@@ -202,7 +165,6 @@
                     power</li>
                     <li>Experimentally determine how many counts for the robot
                     to spin around itself once (full 360)</li>
-                    <ul><li><span class="solution">06-rotate-robot.cpp</span></li></ul>
                     
                 </ol>
                 <h3><span id="rotate90" class="ez">★ </span>Rotate robot 90 Degrees</h3>
@@ -211,27 +173,13 @@
                     <li>Experimentally determine number of counts to rotate 90
                     degrees</li>
                     <li>Stop the robot after it rotates 90 degrees</li>
-                    <ul><li><span class="solution">06-rotate-robot.cpp</span></li></ul>
                 </ol>
                 <h3><span class="yikes">★★★ </span>Making <span class="functions">functions</span></h3>
                 <ol>
                     <li>Make a function right_turn() that makes a right turn  >:)</li>
                     <li>Make another function for left turns</li>
-                    <ul><li><span class="solution">07-rotate-functions.cpp</span></li></ul>
                     <li>Make a travel forward function that takes in a number of
                     counts as a parameter</li>
-                    <ul><li><span class="solution">08-forward-function.cpp</span></li></ul>
-                </ol>
-                <h3 class="strike"><span class="yikes">★★★ </span>Path Following</h3>
-                <ol class="strike">
-                    <li>Use button to start wheels</li>
-                    <li>Travel forward 100 counts</li>
-                    <li>Make a 90 degree right turn</li>
-                    <li>Travel forward 100 counts</li>
-                    <li>Stop the robot</li>
-                    <li><span class="bonus">bonus: </span>blink the led to
-                    celebrate completing the path!</li>
-                    <ul><li><span class="solution">09-pathfollowing.cpp note: this uses functions from above^</span></li></ul>
                 </ol>
             </div>
         </div>
@@ -260,12 +208,10 @@
                     </ul>
                     <li>Stop the motors when lidar detects an object less than 200 mm away</li>
                     <li><span class="bonus">Bonus:</span> blink the LED to show object detected!</li>
-                    <ul><li><span class="solution">01-lidar-spinning-robot.cpp</span></li></ul>
                 </ol>
                 <h3><span class="yikes">★★★ </span>Write a Function:</h3>
                 <ol>
                     <li>Write a <span class="functions">function</span> that when called searches for the object</li>
-                    <ul><li><span class="solution">02-lidar-spinning-function.cpp</span></li></ul>
                 </ol>
             </div>
             <div class="half-column">
@@ -292,24 +238,20 @@
                     <li>Have servo face forwards</li>
                     <li>Have robot drive forwards</li>
                     <li>If an obstacle is detected, hit the brakes!</li>
-                    <ul><li><span class="solution">01-hit-the-brakes.cpp</span></li></ul>
                 </ol>
                 <h3><span class="mid">★★ </span> Like that <a href="https://www.youtube.com/watch?v=5-yevDAY-7U" target="_blank">suitcase...</a></h3>
                 <ol>
                     <li>Use button to start robot's wheels</li>
                     <li>Have the robot stay 20 cm from an object</li>
-                    <ul><li><span class="solution">02-follow-object.cpp</span></li></ul>
                 </ol>
                 <h3><span class="yikes">★★★ </span>Target Acquired</h3>
                 <ol>
                     <li>Use the button to start rotating the servo back and forth</li>
                     <li>When an object is detected, stop the servo</li>
-                    <li>Store somewhere the "location" of the object <br> Hint: ~left or right</li>
+                    <li>Store somewhere the "location" of the object</li>
                     <li>Have the servo face forwards</li>
                     <li>Rotate the robot towards the object until the object is detected again</li>
                     <li>Blink LED when target acquired:) </li>
-                    <li><span class="bonus">Flashy Bonus:</span> Move forward until 2-3 cm from the object, then stop and blink LED</li>
-                    <ul><li><span class="solution">03-target-found.cpp</span></li></ul>
                 </ol>
             </div>
             <div class="half-column">
@@ -333,14 +275,6 @@
                 <h3><span class="ez">★ </span>Measure Angular Velocity</h3>
                 <ol>
                     <li>Using <span class="code">imu.getAngVelZ()</span> data, figure out how fast you can spin the robot!</li>
-                    <ul><li><span class="solution">01-measuring-spin.cpp</span></li></ul>
-                </ol>
-
-                <h3 class="strike"><span class="ez">★ </span>How good is our driving straight scale factor?</h3>
-                <ol class="strike">
-                    <li>Drive the robot straight, but this time, monitor the angular velocity</li>
-                    <li>Consider adjusting your scale factor to minimize the angular velocity;)</li>
-                    <ul><li><span class="solution">02-testing-scalefactor.cpp</span></li></ul>
                 </ol>
                 <h3 id="controltheory"><span class="yikes">★★★ </span>Intro to Control Theory</h3>
                 <ul>
@@ -365,7 +299,6 @@
                     </ol>
                     </ol>
                     <li>To know if error has been eliminated, can turn off the led if the error is below some tolerance</li>
-                    <ul><li><span class="solution">03-control.cpp</span></li></ul>
                 </ul>
             </div>
         </div>

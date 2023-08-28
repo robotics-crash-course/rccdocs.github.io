@@ -17,10 +17,6 @@
         <div>
             <h1>Challenges using Controls</h1>
         </div>
-        <div class="welcome">
-            <p>Now that we can control the robot to drive straight, can finally complete some of the previous challenges :)</p>
-        
-        </div>
         <hr>
         <h2 class="center">Setting up PID Controller</h2>
         <div class="container">
@@ -119,9 +115,10 @@
         <h2 class="center">Challenges</h2>
         <div class="container">
             <div class="left-column">
-                <h3>From Sensor Challenges 1:</h3>
+                <!-- <h3>From Sensor Challenges 1:</h3> -->
             </div>
             <div class="right-column">
+
                 <h3><span class="ez">★ </span>Travel straight for a distance</h3>
                 <ul>
                     <li>Use controller to drive straight, then stop based on encoder readings</li>
@@ -135,13 +132,13 @@
                     <li>Travel forward 100 encoder counts</li>
                     <li>Stop the robot</li>
                 </ul>
-            </div>
-        </div>
-        <div class="container">
-            <div class="left-column">
-                <h3>From Sensor Challenges 2:</h3>
-            </div>
-            <div class="right-column">
+                <h3><span class="mid">★★ </span>Orientation Controller</h3>
+                <ul>
+                    <li>Setup controller so that it integrates the angular velocity to get orientation (angle)</li>
+                    <li class="solution">theta+= imu.getAngVelZ()*config.ts;</li>
+                    <li>Make turns by changing desired orientation or theta</li>
+                    <li>Example, make desired theta 90.0 to make a turn</li>
+                </ul>
                 <h3><span class="yikes">★★★ </span>Play Fetch🐾</h3>
                 <ul>
                     <li>Travel forwards until the lidar detects an object</li>
@@ -155,19 +152,12 @@
                     <li>Travel forward 1.5 meters</li>
                     <li>Stop the robot</li>
                 </ul>
-            </div>
-        </div>
-        <div class="container">
-            <div class="left-column">
-                <h3>From State Machine Challenges:</h3>
-            </div>
-            <div class="right-column">
+            
                 <h3><span class="yikes">★★★ </span>Travel in a Square</h3>
                 <ul>
                     <li>Create states for driving forward and making turns</li>
                     <li>Travel 1 meter between each turn</li>
                     <li class="solution">hint: use <span class="code">setZero()</span> to reset encoder counts</li>
-                    <li>There will be a prize if you can go more than 2x around the square and still land in the box;)</li>
                 </ul>
                 <h3><span class="yikes">★★★ </span>Parking Between Objects</h3>
                 <ul>
@@ -180,32 +170,6 @@
                         <li>Make right turn, pulling into spot</li>
                         <li>Stop before crashing into anything</li>
                     </ol>
-                </ul>
-            </div>
-        </div>
-        <hr>
-        <h2 class="center">More Fun Ideas</h2>
-        <div class="container">
-            <div class="left-column">
-                <p>Hopefully these will help inspire final projects:)</p>
-            </div>
-            <div class="right-column">
-                <h3><span class="mid">★★ </span>Orientation Controller</h3>
-                <ul>
-                    <li>Setup controller so that it integrates the angular velocity to get orientation (angle)</li>
-                    <li class="solution">theta+= imu.getAngVelZ()*config.ts;</li>
-                    <li>Make turns by changing desired orientation or theta</li>
-                    <li>Example, make desired theta 90.0 to make a turn</li>
-                </ul>
-                <h3><span class="yikes">★★★ </span>Painful Pointers Practice</h3>
-                <ul>
-                    <li class="solution">well, hopefully not too much pain...</li>
-                    <li>Set up a function that drives the robot straight at an input orientation (angle)</li>
-                    <li><span class="code">void drive_orientation(/*a bunch of pointers*/, float orientation){}</span></li>
-                    <li>Goal of writing this function is to say "drive forward at 30 degrees", or wherever:)</li>
-                    <li>Hint: you'll need to setup pointers to a few variables and dereference them inside the function</li>
-                    <li class="solution">Jeannette has soln on their computer, gotta check with Andy before posting XD</li>
-                    <li class="solution">Want to probably convert to a struct pointer...</li>
                 </ul>
             </div>
         </div>

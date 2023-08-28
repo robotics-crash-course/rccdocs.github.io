@@ -23,13 +23,6 @@
                 <li><a href="../sensor_challenges/sensorchallenges1.html" target="_blank">Link to Sensor Challenges 1</a></li>
                 <li><a href="../sensor_challenges/sensorchallenges2.html" target="_blank">Link to Sensor Challenges 2</a></li>
                 <br>
-                <li>Template can be found here: rcc-pico/dev/pico/challenges/05-statemachines/template/sm-template.cpp</li>
-                <li><span class="solution">Solutions are under rcc-pico/dev/pico/challenges/05-statemachines/solutions</span></li>
-            </ul>
-            <h3>If looking for more to do...</h3>
-            <ul>
-                <li>Most of the previous challenges can be rewritten with a state machine ;)</li>
-                <li>Ask Andy about state machines with function pointers XD</li>
             </ul>
         </div>
         <hr>
@@ -54,7 +47,6 @@
                     <li>LED has 2 states, ON & OFF</li>
                     <li>Transition Condition: has 400 ms passed?</li>
                     <li>Use <span class="code">previous_time</span> and <span class="code">current_time</span> method NOT <span class="code">sleep_ms()</span></li>
-                    <li class="solution">01-led.cpp</li>
                 </ul>
                 <h3><span class="mid">★★ </span>Follow at a Distance</h3>
                 <ul>
@@ -66,35 +58,16 @@
                     <li>Use the variables above^^</li>
                     <li>3 states: WAIT, FORWARD, BACKWARD</li>
                     <li>Transition Conditions are based on distance reading from lidar and allowable tolerance</li>
-                    <li class="solution">02-follow.cpp</li>
                 </ul>
                 <h3><span class="mid">★★ </span>Write a function to print the state</h3>
                 <ul>
                     <li>hint~ what type is our state?</li>
-                    <li><span class="solution">03-printfunction.cpp</span></li>
-                </ul>
-                
-                <h3><span class="yikes">★★★ </span>Target Acquired (again)</h3>
-                <ul>
-                    <li>Find object by rotating servo and looking at lidar readings</li>
-                    <li>Rotate robot until object detected again</li>
-                    <li><span class="solution">04-targetacquired.cpp</span></li>
                 </ul>
                 <h3><span class="yikes">★★★ </span>Travel thru a Tunnel</h3>
                 <ul>
                     <li>Find both sides of tunnel with lidar</li>
                     <li>Rotate robot until facing the opening</li>
                     <li>Go top speed thru, should be straight enough</li>
-                </ul>
-                <h3><span class="yikes">★★★ </span>Find 3 Objects</h3>
-                <ul>
-                    <li>Search with servo to find 3 objects</li>
-                    <li>Rotate robot until facing the furthest left object</li>
-                    <li>Blink LED for a bit</li>
-                    <li>Rotate robot until facing the middle object</li>
-                    <li>Blink LED for a bit</li>
-                    <li>Rotate robot until facing the furthest right object</li>
-                    <li>Blink LED at end</li>
                 </ul>
                 <h3><span class="yikes">★★★ </span>Detecting Slip</h3>
                 <ul>
@@ -115,51 +88,8 @@
                             then print values constantly so you can plug pico in to see them</li>
                         </ul>
                 </ul>
-                <h3 class="strike"><span class="yikes">★★★ </span>Travel in a square 5 times</h3>
-                <ul class="strike">
-                    <li>Create states for driving forward and making turns</li>
-                    <li>Have some way to count how many turns you've made~ after 5 turns, stop</li>
-                    <li>Travel 1 meter between each turn</li>
-                    <li>hint: use <span class="code">setZero()</span></li>
-                    <li class="solution">05-square.cpp</li>
-                </ul>
-                <h3 class="strike"><span class="yikes">★★★ </span>Parking Between Objects</h3>
-                <ul class="strike">
-                    <li>Order of events:</li>
-                    <ol>
-                        <li>Point servo right, travel forwards</li>
-                        <li>If servo see's first object, take note</li>
-                        <li>Keep going forward until see second object</li>
-                        <li>Travel backwards until halfway between both objects</li>
-                        <li>Make right turn</li>
-                        <li>Pull into parking spot, stop before crashing into anything</li>
-                    </ol>
-                    <li class="solution">06-parking.cpp</li>
-                </ul>
             </div>
         </div>
-        <!-- <hr> -->
-        <h2 class="center"></h2>
-        <div class="container">
-            <div class="left-column">
-
-            </div>
-            <div class="right-column">
-
-            </div>
-
-        </div>
-        <div class="container">
-            <div class="left-column">
-    
-            </div>
-            <div class="right-column">
-    
-            </div>
-
-        </div>
-
-
 
 
     </body>
