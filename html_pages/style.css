@@ -26,6 +26,10 @@ body{
     /* background-color:#BFD7EA; */
 }
 
+.red{
+    color:red;
+}
+
 h1 {
     color: black;
     text-align: center;
@@ -75,6 +79,12 @@ figcaption{
     box-sizing: border-box;
 }
 
+.full-column{
+    flex-basis: 80%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
 .right-column {   
     flex-basis: 70%;
     padding: 20px;
@@ -95,6 +105,10 @@ figcaption{
 
 .view{
     max-width: 100%;
+}
+
+.lessview{
+    max-width: 40%;
 }
 
 .halfview{

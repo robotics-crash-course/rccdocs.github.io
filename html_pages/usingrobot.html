@@ -29,11 +29,11 @@
                     <li><a href="#lidar">Lidar</a></li>
                     <li><a href="#imu">IMU</a></li>
                     <li><a href="#encoder">Encoders</a></li>
-                    <li>Ready to Play?</li>
+                    <!-- <li>Ready to Play?</li>
                     <ul>
                         <li><a href="../sensor_challenges/sensorchallenges1.html" target="_blank">Sensor Challenges 1</a></li>
                         <li><a href="../sensor_challenges/sensorchallenges2.html" target="_blank">Calculus Challenges</a></li>
-                    </ul>
+                    </ul> -->
                 </ul>
             </div>
         </div>
@@ -46,6 +46,7 @@
                 <ul>
                     <li>The LED on the PicoW is activated by the wifi chip onboard (the big silver box opposite to the usb)</li>
                     <li>If is recommended to turn on the led in the first lines of your code so you know the code has been uploaded properly</li>
+                    <li>see rcc-pico/dev/pico/using-robot-examples/led.cpp</li>
                  </ul>
                 <h3>Example Code:</h3>
                 <ol class="bom">
@@ -96,10 +97,9 @@
                 </ul>
                 <h3>How it works:</h3>
                 <ul class="bom">
-                    <li>The push button on the raft is connected to gpio 22 when
-                    the *extra* is activated with a shunt</li>
-                    <li>When the button is not pressed, the gpio reads HIGH</li>
+                    <li>The push button is connected with a shunt to gpio 22</li>
                     <li>When pressed, the button connects it to GND, and the pico reads LOW</li>
+                    <li>see rcc-pico/dev/pico/using-robot-examples/button.cpp</li>
                 </ul>
                 <h3>Example Code:</h3>
                 <ol class="bom">
@@ -154,7 +154,7 @@
                 </ul>
                 <h3>How it works:</h3>
                 <ul class="bom">
-                    <li>The potentiometer *extra* is activated with a shunt on pin 28</li>
+                    <li>The potentiometer is connected with a shunt on pin 28</li>
                     <li>When you twist the nob, the resistance changes</li>
                     <li>+3.3V passes through the variable resistor at all times</li>
                     <li>Potentiometer acts as a voltage divider</li>
@@ -164,6 +164,7 @@
                     <li>Gpio 28 has an Analog-to-Digital Converter (ADC)</li>
                     <li>This converts the analog voltage to a digital value that the Pico can understand</li>
                     <li>The Pico has a 12 bit resolution ADC, which is how we get 4097 as the maximum value</li>
+                    <li>see rcc-pico/dev/pico/using-robot-examples/pot.cpp</li>
                    
                 </ul>
                 <h3>Example Code:</h3>
@@ -226,6 +227,7 @@
                     <li>Turning on/off the correct BJTs changes the motor's polarity, changing the direction the wheel spins</li>
                     <li>To control the speed of the motor, we use pulse-width-modulation (PWM)</li>
                     <li>By setting the %ON or the Duty-Cycle, we can change the effective voltage sent to the motor, changing its speed</li>
+                    <li>see rcc-pico/dev/pico/using-robot-examples/motors.cpp</li>
                 </ul>
                 <h3>Example Code:</h3>
                 <ol class="bom">
@@ -234,11 +236,11 @@
                     <ol>
                         <li>Turns on Pico's LED</li>
                         <li>Sets up motor struct</li>
-                        <li>Sets left and right to ENB and ENA</li>
+                        <li>Sets left and right to ENA and ENB</li>
                         <li>Enables PWM</li>
                         <li>In <span class="code">while()</span>loop:</li>
                         <ol>
-                            <li>Sets motor speed</li>
+                            <li>Sets motor power</li>
                         </ol>
                     </ol>
                 </ol>  
@@ -279,6 +281,8 @@
                     <li>Inside the servo, there is a potentiometer that knows the position of the servo</li>
                     <li>Servo motors are controlled by a PWM signal that corresponds to the desired position</li>
                     <li>The circuit inside has feedback built in to reach and hold the position set by the PWM signal</li>
+                    <li>Since the servo wants a 5V PWM signal, use the level shifter on the raft</li>
+                    <li>see rcc-pico/dev/pico/using-robot-examples/servo.cpp</li>
                 </ul>
                 <h3>Our Servo Motor:</h3>
                 <ul class="bom">
@@ -348,6 +352,7 @@
                     <li>The sensor communicates with the Pico through inter-integrated circuit protocol (i2c)</li>
                     <li>SCL is the clock signal</li>
                     <li>SDA is the data signal</li>
+                    <li>see rcc-pico/dev/pico/using-robot-examples/lidar.cpp</li>
                 </ul>
                 <h3>Example Code:</h3>
                 <ol class="bom">
@@ -361,7 +366,7 @@
                         <li>In <span class="code">while()</span>loop:</li>
                         <ol>
                             <li>returns a distance in millimeters</li>
-                            <li>a reading of 8190 means objects are too far away to detect</li>
+                            <li>a reading of >8000 means objects are too far away to detect</li>
                         </ol>
                     </ol>
                 </ol>  
@@ -411,6 +416,7 @@
                 <h3>Our IMU:</h3>
                 <ul class="bom">
                     <li>MPU6050 <a href="https://components101.com/sites/default/files/component_datasheet/MPU6050-DataSheet.pdf" target="_blank">Link to (long) Datasheet</a></li>
+                    <li>see rcc-pico/dev/pico/using-robot-examples/imu.cpp</li>
                 </ul>
                 <h3>Example Code:</h3>
                 <ol class="bom">
@@ -479,6 +485,7 @@
                 <ul>
                     <li><span class="code">getCount()</span> returns current count</li>
                     <li><span class="code">setZero()</span> resets the count</li>
+                    <li>see rcc-pico/dev/pico/using-robot-examples/odom.cpp</li>
                 </ul>
                 <h3>Example Code:</h3>
                 <ol class="bom">
