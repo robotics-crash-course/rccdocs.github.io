@@ -1,9 +1,9 @@
+<base target="_blank">
 # rcc-docs
 > Robotics Crash Course
 
-View homepage here:
+[HOMEPAGE](https://robotics-crash-course.github.io/rccdocs.github.io/)
 
-https://robotics-crash-course.github.io/rccdocs.github.io/
 
 
 
