@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>State Machine Challenges</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../html_pages/style.css">
+        <link rel="stylesheet" href="../html_pages/scripts/xcode.min.css">
+        <script src="../html_pages/scripts/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script>
+    
+    </head>
+    <body>
+        <div>
+            <h1>State Machine Challenges</h1>
+        </div>
+        <div class="welcome">
+            <ul>
+                <li>Recommend completing <span class="ez">★ </span> from Sensor Challenges 1&2 first</li>
+                <li><a href="../sensor_challenges/sensorchallenges1.html" target="_blank">Link to Sensor Challenges 1</a></li>
+                <li><a href="../sensor_challenges/sensorchallenges2.html" target="_blank">Link to Sensor Challenges 2</a></li>
+                <br>
+            </ul>
+        </div>
+        <hr>
+        <h2 class="center">Challenges:</h2>
+        <div class="container">
+            <div class="left-column">
+                <h3>For any state machine:</h3>
+                <ol>
+                    <li>Draw the diagram!</li>
+                    <li>Determine the number of states</li>
+                    <li>Determine all of the transition conditions</li>
+                    <li>Reference the cpp template;)</li>
+                    <li>Setup enum for the correct number of states, give them good names</li>
+                    <li>Rename <span class="code">state_name</span> to something helpful</li>
+                    <li>Fill in switch case with relevant states and transition conditions</li>
+                </ol>
+
+            </div>
+            <div class="right-column">
+                <h3><span class="ez">★ </span>Blink LED</h3>
+                <ul>
+                    <li>LED has 2 states, ON & OFF</li>
+                    <li>Transition Condition: has 400 ms passed?</li>
+                    <li>Use <span class="code">previous_time</span> and <span class="code">current_time</span> method NOT <span class="code">sleep_ms()</span></li>
+                </ul>
+                <h3><span class="mid">★★ </span>Follow at a Distance</h3>
+                <ul>
+                    <pre><code>
+                        int goal_dist = 200; //mm
+                        int tolerance = 50; //mm
+                    </code></pre>
+                    <li>Goal: Stay 20 ± 5 cm from object</li>
+                    <li>Use the variables above^^</li>
+                    <li>3 states: WAIT, FORWARD, BACKWARD</li>
+                    <li>Transition Conditions are based on distance reading from lidar and allowable tolerance</li>
+                </ul>
+                <h3><span class="mid">★★ </span>Write a function to print the state</h3>
+                <ul>
+                    <li>hint~ what type is our state?</li>
+                </ul>
+                <h3><span class="yikes">★★★ </span>Travel thru a Tunnel</h3>
+                <ul>
+                    <li>Find both sides of tunnel with lidar</li>
+                    <li>Rotate robot until facing the opening</li>
+                    <li>Go top speed thru, should be straight enough</li>
+                </ul>
+                <h3><span class="yikes">★★★ </span>Detecting Slip</h3>
+                <ul>
+                    <li>Keep one wheel still</li>
+                    <li>Find an area of the floor that's clean</li>
+                    <li>Spin one wheel to rotate the robot</li>
+                    <li>Compare counts of encoder wheel to integrating imu for angle</li>
+                    <ul>
+                        <li>Is the counts as expected? </li>
+                    </ul>
+                    <li>Find an area of the floor that is chalky (extra slippery)</li>
+                    <ul>
+                        <li>How do the counts compare now?</li>
+                    </ul>
+                    <li>Hint:</li>
+                    <ul>
+                        <li>Use button to start and stop motor, <br>
+                            then print values constantly so you can plug pico in to see them</li>
+                        </ul>
+                </ul>
+            </div>
+        </div>
+
+
+    </body>
+</html>
