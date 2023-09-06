@@ -14,6 +14,8 @@ sudo apt install git
 
 sudo apt install screen minicom
 
+sudo apt install tio
+
 sudo apt install cmake gcc-arm-none-eabi libnewlib-arm-none-eabi build-essential libstdc++-arm-none-eabi-newlib
 
 ```
@@ -32,7 +34,7 @@ echo 'export PICO_SDK_PATH=/opt/pico-sdk' | sudo tee -a /etc/profile.d/pico-sdk.
 
 source /etc/profile.d/pico-sdk.sh
 ```
-## For MAC OS:
+## For MAC OS **ONLY**:
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
@@ -78,17 +80,17 @@ Expected Output:
 ```bash
 drwxrwxr-x  6 andy andy 4096 Jul 11 23:27 rcc-pico
 ```
-If the two names in the center, `andy andy` in this case aren't your username, you need to run the command below.
+If the two names in the center, `andy andy` aren't your username but are `root root`, you need to run the command below.
 
 
 ```bash
 sudo chown -R your_username:your_username directory_name
 ```
 
+Try running `ls -l` again to confirm that the changes were made.
+
 Then run
 ```bash
-cd rcc-pico
-
 git submodule update --init --recursive
 ```
 
