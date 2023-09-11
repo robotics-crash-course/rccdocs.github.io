@@ -3,9 +3,9 @@
 To upload code to the Pico you must build it using CMake and Make.
 
 ### **CMake and Make**
-CMake gathers libraries and file contignencies that your C/C++ program needs to be able to operate. It links all of these files together and passes them off to Make, which compiles them in the form of a `.uf2` file.
+CMake gathers libraries and file contingencies that your C/C++ program needs to be able to operate. It links all of these files together and passes them off to Make, which compiles them in the form of a `.uf2` file.
 
-To build a program you must first add the program to your CMakeLists.txt file which is located in the `rcc-pico/dev/pico` direcotry.
+To build a program you must first add the program to your CMakeLists.txt file which is located in the `rcc-pico/dev/pico` directory.
 
 At the bottom of the file you will use the macro called `make_exec(arg1 arg2)` and enter your specific arguments
 
@@ -61,7 +61,7 @@ If an output along these lines appears, your pico is being recognized.
 At this point a **two things can happen**.
 
 + Everything goes smoothly and the Pico "mounts" to `/media/user/RPI-RP2`
-    +  Enter the **build** directory which sould contain the made .uf2 files.
+    +  Enter the **build** directory which should contain the made .uf2 files.
     + Type the following command
 ```
 cp my_file.uf2 /media/user/RPI-RP2

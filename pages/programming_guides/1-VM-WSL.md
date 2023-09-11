@@ -3,7 +3,7 @@
 ## **Configuring VirtualBox**
 + The first step in setting up your virtual machine is to download VirtualBox. It can be found here https://www.virtualbox.org/wiki/Downloads.
 
-+ Download the VirtualBox 7.0.8 platform packages that pertain to your machine (most likely Windows hosts). VirtualBox allows us to utilize parts of our computer and direct them towards emulating a seperate PC. If a computer generally has 8 processors for instance, VirtualBox can utilize 4 of the 8 to create a "seperate" PC, that when combined with memory (RAM), and storage (HDD or SSD space) can immitate a seperate computer.
++ Download the VirtualBox 7.0.8 platform packages that pertain to your machine (most likely Windows hosts). VirtualBox allows us to utilize parts of our computer and direct them towards emulating a separate PC. If a computer generally has 8 processors for instance, VirtualBox can utilize 4 of the 8 to create a "separate" PC, that when combined with memory (RAM), and storage (HDD or SSD space) can imitate a separate computer.
 
 + Next we need to download the operating system we'd like to place on the VM (virtual machine). For RCC we'll be using Ubuntu 22.0.4. The .iso (image of data) can be found here https://releases.ubuntu.com/jammy/.
 
