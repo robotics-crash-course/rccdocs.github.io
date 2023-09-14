@@ -116,16 +116,23 @@ cp [file-name.uf2] Volumes/RPI-RP2
 ## **Monitoring Output VM + MACOS**
 To monitor the output, we'll be using tio.
 
-Whenever the pico is in the **run** mode, it'll be identifiable as a USB device called `ttyACM0`. To find this device type:
+Whenever the pico is in the **run** mode, it'll be identifiable as a USB device called `ttyACM0`. To find this device on a VM type:
 
 ```
 ls /dev/tty* | grep ACM0
 ```
-
-If `ttyACM0` is present, you can type the following command to read the serial output from the Pico.
-
+For MacOS type: 
+```
+ls /dev/tty.usbmodule*
+```
+If something pops up, you can type the following command to read the serial output from the Pico.
+VM:
 ```
 tio /dev/ttyACM0
+```
+MacOS:
+```
+tio /dev/tty.usmodule<the module that apears>
 ```
 
 To exit screen you could do three things:
