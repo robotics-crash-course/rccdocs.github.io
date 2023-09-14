@@ -2,11 +2,11 @@
 
 The first step is to open up your terminal. This can be done by searching for it by pressing the windows key and typing in the search bar or pressing `CTRL+ALT+t`
 
-##For VM Users:
-Preface: This is a last resort if your WSL2 or UNIX build fails.
+## For VM Users:  
+Preface: This is a last resort if your WSL2 or UNIX build fails.  
 Speak to your teachers & teaching advisors to have an account created, and to get your account name.
 
-Run this command in terminal to access your machine, and then change your password. Windows users may have to install SSH.
+Run this command in terminal to access your machine, and then change your password. Windows users may have to install SSH.  
 ```bash
 #This will prompt you for your password. Enter the key given to you here.
 ssh -p 31415 <account name>@199.98.27.133
@@ -21,7 +21,7 @@ Enter in the command from above into the bar:
 ```bash
 ssh -p 31415 <account name>@199.98.27.133
 ```
-Login, and select rcc-pico as the directory you'd like to open. 
+Login, and select rcc-pico as the directory you'd like to open.  
 
 ## For Ubuntu:
 Within your terminal type the following commands:
