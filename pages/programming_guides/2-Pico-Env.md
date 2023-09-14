@@ -11,7 +11,7 @@ Run this command in terminal to access your machine, and then change your passwo
 #This will prompt you for your password. Enter the key given to you here.
 ssh -p 31415 <account name>@199.98.27.133
 #If it is your first time running, change your password with:
-passwd <acount_name>
+passwd <account_name>
 #Then, execute the opt/rcc_init.sh script:
 ./opt/rcc_init.sh
 ```
