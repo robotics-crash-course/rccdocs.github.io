@@ -2,8 +2,28 @@
 
 The first step is to open up your terminal. This can be done by searching for it by pressing the windows key and typing in the search bar or pressing `CTRL+ALT+t`
 
-## For Ubuntu:
+##For VM Users:
+Preface: This is a last resort if your WSL2 or UNIX build fails.
+Speak to your teachers & teaching advisors to have an account created, and to get your account name.
 
+Run this command in terminal to access your machine, and then change your password. Windows users may have to install SSH.
+```bash
+#This will prompt you for your password. Enter the key given to you here.
+ssh -p 31415 <account name>@199.98.27.133
+#If it is your first time running, change your password with:
+passwd <acount_name>
+#Then, execute the opt/rcc_init.sh script:
+./opt/rcc_init.sh
+```
+To open your environment in VScode, install the SSH extension in VScode.
+Then, hit Ctrl-Shift-P, and select/search "Remote SSH: Connect Current Window to Host", and add new host.
+Enter in the command from above into the bar: 
+```bash
+ssh -p 31415 <account name>@199.98.27.133
+```
+Login, and select rcc-pico as the directory you'd like to open. 
+
+## For Ubuntu:
 Within your terminal type the following commands:
 ```bash
 sudo apt update
