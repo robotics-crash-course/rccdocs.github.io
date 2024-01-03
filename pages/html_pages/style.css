@@ -102,6 +102,12 @@ figcaption{
     box-sizing: border-box;
 }
 
+.third-column {   
+    flex-basis: 33%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
 
 .view{
     max-width: 100%;
