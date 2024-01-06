@@ -7,7 +7,7 @@
         <title>RCC Homepage</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="pages/html_pages/boardstyle.css">
+        <link rel="stylesheet" href="pages/html_pages/style.css">
         <style>
             body{
                 background-image: url("pages/html_pages/images/withfasteners-alldone.png");
@@ -18,51 +18,71 @@
             }
 
             .transparent-bg {
-            background-color: rgba(255, 255, 255, 0.8); 
+                background-color: rgba(255, 255, 255, 0.8); 
+                padding-bottom: 20%;
              }
+            h2{
+                font-size: 30px;
+            }
+
+            h3{
+                font-size: 24px;
+            }
+            p{
+                font-size: 20px;
+            }
         </style>
     
     </head>
     <body>
         <div class="center transparent-bg">
             <h1>Robotics Crash Course</h1>
-            <h2>Getting Started Guides</h2>
-            <p><a href="https://github.com/robotics-crash-course/rccdocs.github.io/blob/main/pages/programming_guides/1-VM-WSL.md" target="_blank">Setting up Ubuntu Virtual Machine</a></p>
-            <p><a href="https://github.com/robotics-crash-course/rccdocs.github.io/blob/main/pages/programming_guides/2-Pico-Env.md" target="_blank">Setting up C++ Development Environment</a></p>
-            <p><a href="https://github.com/robotics-crash-course/rccdocs.github.io/blob/main/pages/programming_guides/3-Upload-Pico.md" target="_blank">Building, Uploading, and Monitoring the Pico (in C++)</a></p>
-            <p><a href="" target="_blank">Setting up MicroPython Development Environment</a></p>
-            <p><a href="" target="_blank">Using MicroPico for MicroPython Development</a></p>
 
-            <h2>Using the Robot Guides</h2>
-            <p><a href="" target="_blank">Guide to Using Sensors & Actuators in MicroPython</a></p>
-            <p><a href="pages/html_pages/usingrobot.html" target="_blank">Guide to Using Sensors & Actuators in C++</a></p>
-            
-            <h2>Using the Raft</h2>
-            <p><a href="https://github.com/robotics-crash-course/rccdocs.github.io/blob/main/pages/html_pages/RAFT-DATASHEET.pdf" target="_blank">Raft Datasheet</a></p>
+            <div class="container">
+                <div class="third-column">
+                    <h2>Getting Started</h2>
+                    <p><a href="https://github.com/robotics-crash-course/rccdocs.github.io/blob/main/pages/programming_guides/1-VM-WSL.md" target="_blank">Setting up Ubuntu Virtual Machine</a></p>
+                    <p><a href="https://github.com/robotics-crash-course/rccdocs.github.io/blob/main/pages/programming_guides/shell-cheat-sheet.pdf" target="_blank">Shell Cheat Sheet</a></p>
 
-            <h2>Robot Assembly Guides</h2>
-            <p><a href="pages/html_pages/mechanical.html" target="_blank">Mechanical Assembly </a></p>
-            <p><a href="pages/html_pages/electrical.html" target="_blank">Electrical Assembly (Last Updated Fall 2023)</a></p>
-            <p><a href="pages/html_pages/newpinout.html" target="_blank">Winter 2024 Raft Pinout</a></p>
+                    <h3>For Programming in C++</h3>
+                    <p><a href="https://github.com/robotics-crash-course/rccdocs.github.io/blob/main/pages/programming_guides/2-Pico-Env.md" target="_blank">Setting up C++ Development Environment</a></p>
+                    <p><a href="https://github.com/robotics-crash-course/rccdocs.github.io/blob/main/pages/programming_guides/3-Upload-Pico.md" target="_blank">Building, Uploading, and Monitoring the Pico (in C++)</a></p>
+                   
+                    <h3>For Programming in MicroPython</h3>
+                    <p><a href="" target="_blank">Setting up MicroPython Development Environment</a></p>
+                    <p><a href="" target="_blank">Using MicroPico for MicroPython</a></p>
 
-            <h2>Using the Shell</h2>
-            <p><a href="https://github.com/robotics-crash-course/rccdocs.github.io/blob/main/pages/programming_guides/shell-cheat-sheet.pdf" target="_blank">Shell Cheat Sheet</a></p>
+                </div>
+                <div class="third-column">
+                    <h2>Using the Robot</h2>
+                    <h3>Using the Raft</h3>
+                    <p><a href="https://github.com/robotics-crash-course/rccdocs.github.io/blob/main/pages/html_pages/RAFT-DATASHEET.pdf" target="_blank">Raft Datasheet</a></p>
 
-            <h2>Winter 2024 Challenges</h2>
-            <p>Coming soon...</p>
+                    <h3>Assembling the Robot</h3>
+                    <p><a href="pages/html_pages/mechanical.html" target="_blank">Mechanical Assembly </a></p>
+                    <p><a href="pages/html_pages/electrical.html" target="_blank">Electrical Assembly </a></p>
+                    <p><a href="pages/html_pages/newpinout.html" target="_blank">Winter 2024 Raft Pinout</a></p>
 
-            <h2>Challenges From Summer 2023</h2>
-            <p><a href="pages/sensor_challenges/sensorchallenges1.html" target="_blank">Sensor Challenges 1</a></p>
-            <!-- <p><a href="python_challenges/python.html" target="_blank">Calculus in Python</a></p> -->
-            <p><a href="pages/sensor_challenges/sensorchallenges2.html" target="_blank">Sensor Challenges 2</a></p>
-            <p><a href="pages/sm_challenges/smchallenges.html" target="_blank">State Machine Challenges</a></p>
-            <p><a href="pages/sm_challenges/controlschallenges.html" target="_blank">Controls Challenges</a></p>
-            <p><a href="https://github.com/jcirce/hardware-crash-course/blob/main/Hardware-Crash-Course.pdf" target="_blank">Hardware Crash Course Challenges</a></p>
-            <p><a href="pages/sm_challenges/rgbled.html" target="_blank">RGB LED Control Challenge</a></p>
+                    <h3>Using Robot in C++</h3>
+                    <p><a href="pages/html_pages/usingrobot.html" target="_blank">Guide to Using Sensors & Actuators in C++</a></p>
+
+                </div>
+                <div class="third-column">
+                    <h2>Lessons & Challenges</h2>
+                    <h3>Winter 2024</h3>
+                    <h3>Summer 2023</h3>
+                    <p><a href="pages/sensor_challenges/sensorchallenges1.html" target="_blank">Sensor Challenges 1</a></p>
+                    <!-- <p><a href="python_challenges/python.html" target="_blank">Calculus in Python</a></p> -->
+                    <p><a href="pages/sensor_challenges/sensorchallenges2.html" target="_blank">Sensor Challenges 2</a></p>
+                    <p><a href="pages/sm_challenges/smchallenges.html" target="_blank">State Machine Challenges</a></p>
+                    <p><a href="pages/sm_challenges/controlschallenges.html" target="_blank">Controls Challenges</a></p>
+                    <p><a href="https://github.com/jcirce/hardware-crash-course/blob/main/Hardware-Crash-Course.pdf" target="_blank">Hardware Crash Course Challenges</a></p>
+                    <p><a href="pages/sm_challenges/rgbled.html" target="_blank">RGB LED Control Challenge</a></p>
+
+                </div>
+
+            </div>
 
         </div>
-
-
-
 
     </body>
