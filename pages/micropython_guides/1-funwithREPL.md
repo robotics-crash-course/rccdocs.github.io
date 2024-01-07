@@ -5,6 +5,7 @@ REPL stands for Read, Evaluate, Print Loop
 In MicroPico we have direct access to the Pico's REPL. After connecting your pico by plugging it in to your computer, open the REPL by running any Python Script. (Use the Run button at the bottom of the VS Code window)
 
 ![REPL when its first opened](./images/openreplrun.png)
+
 Screenshot of VS Code with MicroPico Configured
 
 ### Say Hi to your Pico!
