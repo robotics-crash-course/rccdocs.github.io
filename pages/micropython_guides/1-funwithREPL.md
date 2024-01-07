@@ -66,9 +66,9 @@ Let's print them:
 ```
 >>> print(message)
 ```
-#### Pro Tip: can print more than one variable at a time! Use commas to separate items
+#### Pro Tip: Use `f` before a string to use a formatted string, Python will print the value of the variables within the `{}`
 ```
->>> print("x =",x,"y =",y,"and",another)
+>>> print(f"x is {x}, y is {y}, and {another}")
 ```
 As long as our Pico remains connected, our REPL will store any information we put into it!
 
@@ -90,6 +90,14 @@ print(z)
 ```
 To run the file, use the `Run` button at the bottom of VS Code, the output will print to the REPL. Change any of the variables and run it again. Play around with the different variable types and the syntax until you feel comfortable before moving on. 
 
+### Comments
+Any code that follows a `#` will be ignored, as it is `commented out`
+Example:
+```python
+x = 5 #centimeters
+```
+comments can be incredibly helpful for storing information about what the code is doing or more information about a variable. 
+
 
 ## Logical Statements in Python
 Now that we have the basics of variables down, let's use them! 
@@ -105,7 +113,7 @@ if (condition we are checking):
 An example:
 ```python
 if (y >= x):
-    print("y + x =", z)
+    print(f"y + x = {z}")
 ``` 
 When we run the script, the print statement will only execute `if` y is greater than equal to x
 
