@@ -30,10 +30,21 @@ Now ask your pico to print the sum of the variables:
 >>> print(x+y+z)
 ```
 
+#### Shortcuts 
+If you want to perform math on a single variable (such as `x = x + 3`): there are a number of shortcuts we can use:
+```python
+x += 4 #x = x + 4
+x -= 4 #x = x - 4
+x *= 4 #x = x*4
+x /= 4 #x = x/4
+x %= 4 #x = x % 4
+```
+Try any/all of these commands, print the variable `x` within the REPL to see the output!
+
 #### Floats
 Floats, or floating point variables are numbers with decimal places, I like to think of the floating point as the decimal point's ability to move around as needed by the situation. 
 
-let's use the REPL to make a couple floats:
+Let's use the REPL to make a couple floats:
 ```
 >>> pi = 3.14159
 >>> e = 2.718
@@ -42,13 +53,13 @@ Now lets challenge our pico with some tough math:
 ```
 >>> print(pi*e)
 ```
-Unfortunately, our pico is a master at floating point mathematics, and it can do it really fast! 
+Unfortunately, our Pico is a master at floating point mathematics, and it can do it really fast! 
 
 #### Strings
 Strings are groups of characters, or groups of words:
 ```
->>> message = "I think i'm getting the hang of this"
->>> another = "python is fun!"
+>>> message = "I think I'm getting the hang of this"
+>>> another = "Python is fun!"
 ```
 Let's print them:
 ```
@@ -58,7 +69,7 @@ Let's print them:
 ```
 >>> print("x =",x,"y =",y,"and",another)
 ```
-As long as our Pico remainds connected, our REPL will store any information we put into it!
+As long as our Pico remains connected, our REPL will store any information we put into it!
 
 
 ## Let's make our first script!
@@ -68,7 +79,7 @@ Use `CTRL+Shift+E` to open the file explorer, click on the scripts directory, us
 
 Make sure to save the new file!
 
-Inside the file, let's make a bunch of variables and print statements~
+Inside the file, let's make a bunch of variables and print statements:
 ```python
 x = 5
 y = 42
@@ -76,14 +87,14 @@ z = x+y
 
 print(z)
 ```
-To run the file, use the Run button at the bottom of VS code, the output will print to the REPL. Change any of the variables and run it again. Play around with the different variable types and the syntax until you feel comfortable before moving on. 
+To run the file, use the `Run` button at the bottom of VS Code, the output will print to the REPL. Change any of the variables and run it again. Play around with the different variable types and the syntax until you feel comfortable before moving on. 
 
 
 ## Logical Statements in Python
-Now that we have the basics of variables down, lets use them! 
+Now that we have the basics of variables down, let's use them! 
 
 ### If statements
-In any programming language, the If statement checks if a condition is `True`, then executes the contents inside of the if statement. 
+In any programming language, the `If` statement checks if a condition is `True`, then executes the contents inside of the if statement. 
 
 In Python the syntax is as follows:
 ```python
@@ -96,6 +107,16 @@ if (y >= x):
     print("y + x =", z)
 ``` 
 When we run the script, the print statement will only execute `if` y is greater than equal to x
+
+We have a number of options for logical conditions in programming:
+```python
+x >  y # greater than
+x <  y # less than
+x >= y # greater than or equal
+x <= y # less than or equal 
+x != y # not equal 
+x == y # equal
+```
 
 ### Checking equality
 If we want to use an `if` statement to check if two variables are equal, use `==`. 
@@ -114,7 +135,7 @@ If you have several if statements that involve the same variables, an If-Else st
 ```python
 x = 4
 y = 10
-z = x+y
+z = x + y
 
 if (y > x):
     print(z)
@@ -125,21 +146,32 @@ else:
 ```
 Play with the variables until you can get all the options to print! Also feel free to get creative:)
 
+### Checking multiple conditions in one statement
+If you want to check multiple conditions within one if statement, in python simply use `and` and `or` statements:
+
+```python
+if(x > y and y > 5):
+    print("x must be greater than 5")
+
+if(y > 4 or y < 10 and y!=6):
+    print("y might be 5 but it's not 6")
+```
+
 ## Loops
 Let's say we want to execute a line of code multiple times. When programming we typically want to type as little as possible, and loops allow us to type the command once and it'll run for the number of times we want! 
 
 ### For loops
-If we want a line of code to run for a specific number of iterations, we use a `for` loop. 
+If we want a line of code to run for a specific number of times, we use a `for` loop. 
 
 The syntax in Python is:
 
 ```python
-for variable in iterable:
+for variable in list:
     code we want to execute
 ```
-The variable tracks which value of the iterable we are in; iterables are typically lists of numbers but python gives a lot of freedom. 
+The variable tracks which value of the list we are in, we typically use `i`; the lists are typically numbers but python gives a lot of freedom. 
 
-In our script, lets print the value of `i`, our variable, 5 times:
+In our script, let's print the value of `i`, our variable, 5 times:
 ```python
 for i in range(5):
     print(i)
@@ -160,7 +192,7 @@ while(True):
     print("I'm gonna print forever")
 ```
 
-`While` loops can stop on their own if the condition becomes false, but this technique is known as `blocking` because your program will be stuck in the while loop until the condition is false, so this is not reccomended. 
+`While` loops can stop on their own if the condition becomes false, but this technique is known as `blocking` because your program will be stuck in the while loop until the condition is false, so this practice  is not reccomended. 
 
 ## Summary
 In this guide, we covered basics of using the REPL within MicroPico in VS Code. You can now make all the scripts you want within the scripts folder! We also introduced print statements, variable types, if statements, for loops, and while loops. 
