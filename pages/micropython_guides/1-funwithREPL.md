@@ -50,7 +50,7 @@ Let's use the REPL to make a couple floats:
 >>> pi = 3.14159
 >>> e = 2.718
 ```
-Now lets challenge our pico with some tough math:
+Now lets challenge our Pico with some tough math:
 ```
 >>> print(pi*e)
 ```
@@ -187,13 +187,13 @@ for i in list:
 ### While Loops
 `While` loops execute code while a condition is `True`
 
-The simplest while loop is known as the while-true loop. This loop will run until you press `Stop` or the pico loses power. Try running this loop: 
+The simplest while loop is known as the while-true loop. This loop will run until you press `Stop` or the Pico loses power. Try running this loop: 
 ```python
 while(True):
     print("I'm gonna print forever")
 ```
 
-`While` loops can stop on their own if the condition becomes false, but this technique is known as `blocking` because your program will be stuck in the while loop until the condition is false, so this practice  is not reccomended. 
+`While` loops can stop on their own if the condition becomes false, but this technique is known as `blocking` because your program will be stuck in the while loop until the condition is false, so this practice  is not recommended. 
 
 ## Summary
 In this guide, we covered basics of using the REPL within MicroPico in VS Code. You can now make all the scripts you want within the scripts folder! We also introduced print statements, variable types, if statements, for loops, and while loops. 
