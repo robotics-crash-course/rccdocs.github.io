@@ -138,3 +138,6 @@ if favcolor == "blue" and age > 13:
 ```
 
 When this script is run, the if-statement checks if the variable `favcolor` is equal to a string `blue`, `and` if the variable age is greater than 13. If both are `True`, then the `led_on()` function will run, turning on the LED. 
+
+## Summary
+In this guide, we learned how to write functions in python, how to navigate classes, and how to use the rcc_library to turn on the Pico's LED!
