@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Winter 2024 Raft Pinout</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    
+    </head>
+    <body>
+        <div>
+            <h1>Raft v0.6 Pinout for Winter 2024</h1>
+        </div>
+        <div class="welcome">
+            <div class="tips">
+                <h3>IMPORTANT:</h3>
+                <ul>
+                    <li class="red">Make sure BOARD is OFF when plugging things in</li>
+                    <li>Please ask for help BEFORE powering if you are not 100% confident with the wiring</li>
+                    <li>SHUNTS connect green and white pins</li>
+                    <li>If 5V devices are not working, make sure using a v0.6 Raft</li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <div class="container">
+            <div class="third-column">
+                <h2 class="center">+5V Devices</h2>
+                <h3>Servo Motor</h3>
+                <ul class="bom">
+                    <li>SHUNT on Pin 16</li>
+                    <li><span style="color:orange;">orange</span> wire to <span style="color:blue;">*16</span></li>
+                    <li><span style="color:red;">red</span> wire to <span style="color:red;">+5V</span></li>
+                    <li><span style="color:rgb(79, 27, 27);">brown</span> wire to GND</li>
+                </ul>
+                <h3>Left Encoder</h3>
+                <ul>
+                    <li>SHUNTS on Pins 18 & 19</li>
+                    <li>Black wire to GND</li>
+                    <li><span style="color:red;">Red</span> wire to <span style="color:red;">+5V</span></li>
+                    <li><span style="color:green;">Green</span> wire to <span style="color:blue;">*18</span></li>
+                    <li><span style="color:blue;">Blue</span> wire to <span style="color:blue;">*19</span></li>
+                </ul>
+                <h3>Right Encoder</h3>
+                <ul>
+                    <li>SHUNTS on Pins 20 & 21</li>
+                    <li>Black wire to GND</li>
+                    <li><span style="color:red;">Red</span> wire to <span style="color:red;">+5V</span></li>
+                    <li><span style="color:blue;">Blue</span> wire to <span style="color:blue;">*20</span></li>
+                    <li><span style="color:green;">Green</span> wire to <span style="color:blue;">*21</span></li>
+                </ul>
+            </div>
+            <div class="third-column">
+                <h2 class="center">I2C Devices</h2>
+                <p>SHUNTS on BOTH Pin 14 & Pin 15 <br> note: *I2C1 Bus has *SCL and *SDA <br> another note: wire color does not matter </p>
+                <h3>Lidar (VL53L0X)</h3>
+                <ul class="bom">
+                    <li>VCC to <mark>3V3</mark></li> 
+                    <li>GND to GND</li>
+                    <li>SCL to *SCL</li>
+                    <li>SDA to <span style="color:green">*SDA</span></li>
+                    <li>note: other 2 pins on lidar are unconnected</li>
+                </ul>
+                <h3>IMU (MPU6050)</h3>
+                <ul>
+                    <li>VCC to <mark>3V3</mark></li> 
+                    <li>GND to GND</li>
+                    <li>SCL to *SCL</li>
+                    <li>SDA to <span style="color:green">*SDA</span></li>
+                    <li>note: other 4 pins on imu are unconnected</li>
+                </ul>
+            </div>
+            <div class="third-column">
+                <h2 class="center">Motor Controller</h2>
+                <p>If not done so already, remove shunts from ENA and ENB</p>
+                <h3>Power</h3>
+                <ul>
+                    <li>Black wire from GND on Raft to GND on motor controller</li>
+                    <li><span style="color:red">Red</span> wire from +Vin on Raft to +12V on motor controller</li>
+                </ul>
+                <h3>Left Motor</h3>
+                <ul class="bom">
+                    <li>Black wire to OUT1</li>
+                    <li><span style="color:red">Red</span> wire to OUT2</li>
+                </ul>
+                <h3>Right Motor</h3>
+                <ul class="bom">
+                    <li>Black wire to OUT4</li>
+                    <li><span style="color:red">Red</span> wire to OUT3</li>
+                </ul>
+                <h3>Control Signals (all to <span style="color:green">GPIO</span> Pins)</h3>
+                <ul>
+                    <li>ENA to Pin 7</li>
+                    <li>IN1 to Pin 8</li>
+                    <li>IN2 to Pin 9</li>
+                    <li>IN3 to Pin 10</li>
+                    <li>IN4 to Pin 11</li>
+                    <li>ENB to Pin 12</li>
+                </ul>
+            </div>
+        </div>
+            
+    </body>
