@@ -16,17 +16,16 @@ print("Hello World")
 Print statements are very helpful while programming, they allow the pico to communicate to you any number of things while running our scripts and eventually controlling the robot!
 
 ### Variable Types
-Unlike C or C++, Python does not require you to explicitly declare the variable's type, it will infer the type as variables are assigned. Nevertheless, understanding the basics of variable types is where we will begin. 
-
+Unlike C or C++, Python does not require you to explicitly declare the variable's type, it will infer the type as variables are assigned.
 
 #### Integers
-Inside of your REPL, declare a couple of variables as integers by assigning them to whole numbers:
+Inside of your REPL, can variables as `integers` by assigning them to `whole numbers`:
 ```
 >>> x = 3
 >>> y = 4
 >>> z = 5
 ```
-Now ask your pico to print the sum of the variables:
+Inside the REPL, can `evaluate` or do math with any variables:
 ```
 >>> x+y+z
 ```
@@ -38,19 +37,17 @@ x += 4 #x = x + 4
 x -= 4 #x = x - 4
 x *= 4 #x = x*4
 x /= 4 #x = x/4
-x %= 4 #x = x % 4
 ```
-Try any/all of these commands, print the variable `x` within the REPL to see the output!
 
 #### Floats
-Floats, or floating point variables are numbers with decimal places, I like to think of the floating point as the decimal point's ability to move around as needed by the situation. 
+Floats, or floating point variables, are numbers with decimal places, I like to think of the floating point as the decimal point's ability to move around as needed by the situation. 
 
-Let's use the REPL to make a couple floats:
+Inside the REPL, we can declare `floats`:
 ```
 >>> pi = 3.14159
 >>> e = 2.718
 ```
-Now lets challenge our Pico with some tough math:
+The pico is pretty good at math:
 ```
 >>> pi*e
 ```
@@ -61,7 +58,7 @@ Strings are groups of characters, or groups of words:
 >>> message = "I think I'm getting the hang of this"
 >>> another = "Python is fun!"
 ```
-Let's print them:
+Can print any `string` inside the REPL:
 ```
 >>> message
 ```
@@ -85,14 +82,14 @@ The REPL's output for `cold and snowing` will be `False`, because both of them a
 
 
 
-## Let's make our first script!
+## Making Scripts!
 Use `CTRL+Shift+E` to open the file explorer, click on the scripts directory, use the +file button to add a new file, name it `firstscript.py`
 
 ![How to add a new file in VSCode](./images/opennewfile.png)
 
-Make sure to save the new file!
+Make sure to save the new file! (white dot inside VS Code means the file is unsaved)
 
-Inside the file, let's make a bunch of variables and print statements:
+Inside the file, can make a bunch of variables and print statements:
 ```python
 x = 5
 y = 42
@@ -100,7 +97,7 @@ z = x+y
 
 print(z)
 ```
-To run the file, use the `Run` button at the bottom of VS Code, the output will print to the REPL. Change any of the variables and run it again. Play around with the different variable types and the syntax until you feel comfortable before moving on. 
+To run the file, use the `Run` button at the bottom of VS Code, the output will print to the REPL. 
 
 ### Comments
 Any code that follows a `#` will be ignored, as it is `commented out`
@@ -110,12 +107,23 @@ x = 5 #centimeters
 ```
 Comments can be incredibly helpful for storing information about what the code is doing or more information about a variable. 
 
+At the top of each file, it's helpful to comment what the file is doing and when you wrote it so that when you look back, you know what the code is doing! 
+
+```python
+# Written by Jeannette 1/20
+# this script print's the value of x 
+
+x = 3
+print(x)
+```
 
 ## Logical Statements in Python
-Now that we have the basics of variables down, let's use them! 
+Logical or conditional statements allow us to program the pico and eventually program our robot to make decisions on its own:)
 
 ### If statements
 In any programming language, the `If` statement checks if a condition is `True`, then executes the contents inside of the if statement. 
+
+Its important that Python code is `indented` properly. Typically, after a `:`, need to `Tab` the following line so Python knows what code to execute if the statement is True. 
 
 In Python the syntax is as follows:
 ```python
@@ -128,7 +136,7 @@ x = 5
 y = 10
 z = 15
 if (y >= x):
-    print(f"y + x = {z}")
+    print(f"y is greater than or equal to x")
 ``` 
 When we run the script, the print statement will only execute `if` y is greater than equal to x
 
@@ -219,4 +227,4 @@ while(True):
 ```
 
 ## Summary
-In this guide, we covered basics of using the REPL within MicroPico in VS Code. You can now make all the scripts you want within the scripts folder! We also introduced print statements, variable types, if statements, for loops, and while loops. 
+In this guide, we covered basics of using the REPL within MicroPico in VS Code. We also introduced print statements, variable types, if statements, for loops, and while loops. 

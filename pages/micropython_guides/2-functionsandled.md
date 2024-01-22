@@ -5,7 +5,7 @@ The first rule of programming is don't repeat yourself, the second rule is don't
 ## Writing Functions
 Functions are essential to following the aforementioned rules of programming. Functions allow us to execute the same line(s) of code over and over, and the best part is, if we do it right, we only have to type those lines once! 
 
-While not necessarily required, most functions take inputs and return something.  
+While not necessarily required, most functions take `inputs` and `return` something.  
 
 In Python: first define the name of the function, the number of inputs, the code that is executed, and then what the function returns. 
 
@@ -44,7 +44,6 @@ class Raft:
         #turn on LED
     def led_off(self):
         #turn off LED
-
 ```
 
 Inside this example `class`, there are two `member functions`, and they either turn on or off the led on the Pico. 
@@ -82,22 +81,24 @@ Once again, need to use parenthesis to run the function.
 Make a new script within your scripts folder, let's explore the Raft class:
 
 ```python
+#this script turns on the Pico's LED
+
 #import the class 
 from include.rcc_library import Raft
 
-#make your own instance of the class
+#make instance of the class
 myraft = Raft()
 
 #call the led_on function
 myraft.led_on()
 ```
-When you run this script, you'll most likely see this error: 
+When you first run this script, you'll most likely see this error: 
 
 `ImportError: no module named 'include'`
 
 This is because the pico does NOT have all of the RCC-written modules and classes preinstalled, why would it? 
 
-To upload the modules to the Pico, use the MicroPico commands:
+To upload all the modules to the Pico, use the MicroPico commands:
 
 First, use `CTRL+Shift+P` to open the commands, then search for `MicroPico: Upload Project to Pico`. Use this command to upload all of the modules. 
 
@@ -134,7 +135,6 @@ age = 24
 
 if favcolor == "blue" and age > 13:
     myraft.led_on()
-
 ```
 
 When this script is run, the if-statement checks if the variable `favcolor` is equal to a string `blue`, `and` if the variable age is greater than 13. If both are `True`, then the `led_on()` function will run, turning on the LED. 
