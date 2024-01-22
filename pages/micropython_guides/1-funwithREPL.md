@@ -2,7 +2,7 @@
 
 REPL stands for Read, Evaluate, Print Loop
 
-In MicroPico we have direct access to the Pico's REPL. After connecting your pico by plugging it in to your computer, open the REPL by running any Python Script. (Use the Run button at the bottom of the VS Code window)
+Using the MicroPico extension in VSCode, we have direct access to the Pico's REPL. After connecting your pico by plugging it in to your computer, open the REPL by running any Python Script. (Use the Run button at the bottom of the VS Code window)
 
 ![REPL when its first opened](./images/openreplrun.png)
 
@@ -28,7 +28,7 @@ Inside of your REPL, declare a couple of variables as integers by assigning them
 ```
 Now ask your pico to print the sum of the variables:
 ```
->>> print(x+y+z)
+>>> x+y+z
 ```
 
 #### Shortcuts 
@@ -52,9 +52,8 @@ Let's use the REPL to make a couple floats:
 ```
 Now lets challenge our Pico with some tough math:
 ```
->>> print(pi*e)
+>>> pi*e
 ```
-Unfortunately, our Pico is a master at floating point mathematics, and it can do it really fast! 
 
 #### Strings
 Strings are groups of characters, or groups of words:
@@ -64,13 +63,26 @@ Strings are groups of characters, or groups of words:
 ```
 Let's print them:
 ```
->>> print(message)
+>>> message
 ```
-#### Pro Tip: Use `f` before a string to use a formatted string, Python will print the value of the variables within the `{}`
+##### Pro Tip: Use `f` before a string to use a formatted string, Python will print the value of the variables within the `{}`
 ```
 >>> print(f"x is {x}, y is {y}, and {another}")
 ```
 As long as our Pico remains connected, our REPL will store any information we put into it!
+
+#### Booleans
+
+Booleans are variables that are either 1 or 0, or `True` or `False`. Within the REPL, can enter these variables and print the output's when we combine the two variables.
+```python
+>>> cold = True
+>>> snowing = False
+
+>>> cold and snowing
+>>> cold or snowing
+```
+The REPL's output for `cold and snowing` will be `False`, because both of them are not True. The output for `cold or snowing` will be `True` because one of them is `True`.
+
 
 
 ## Let's make our first script!
@@ -96,7 +108,7 @@ Example:
 ```python
 x = 5 #centimeters
 ```
-comments can be incredibly helpful for storing information about what the code is doing or more information about a variable. 
+Comments can be incredibly helpful for storing information about what the code is doing or more information about a variable. 
 
 
 ## Logical Statements in Python
@@ -112,6 +124,9 @@ if (condition we are checking):
 ```
 An example:
 ```python
+x = 5
+y = 10
+z = 15
 if (y >= x):
     print(f"y + x = {z}")
 ``` 
@@ -134,6 +149,8 @@ Using `=` sets the value of a variable, using `==` checks if two values are equa
 
 An example:
 ```python
+x = "banana"
+y = "banana"
 if (y == x):
     print("y and x are the same")
 ```
@@ -153,16 +170,16 @@ elif (y < x):
 else:
     print("y and x are the same")
 ```
-Play with the variables until you can get all the options to print! Also feel free to get creative:)
+
 
 ### Checking multiple conditions in one statement
 If you want to check multiple conditions within one if statement, in python simply use `and` and `or` statements:
 
 ```python
-if(x > y and y > 5):
+if (x > y and y > 5):
     print("x must be greater than 5")
 
-if(y > 4 or y < 10 and y!=6):
+if (y > 4 or y < 10 and y!=6):
     print("y might be 5 but it's not 6")
 ```
 
@@ -185,7 +202,7 @@ In our script, let's print the value of `i`, our variable, 5 times:
 for i in range(5):
     print(i)
 ```
-as you can see from the output in the REPL, the `range()` function gives the numbers 1-5 in that order, if we wanted to use custom numbers, we can also make our own list:
+as you can see from the output in the REPL, the `range()` function gives the numbers 1-5 in that order, if we wanted to use custom numbers, we can also make our own list using square brackets and commas:
 ```python
 list = [0, 30, 60, 90, 120, 150, 180]
 for i in list:
@@ -200,8 +217,6 @@ The simplest while loop is known as the while-true loop. This loop will run unti
 while(True):
     print("I'm gonna print forever")
 ```
-
-`While` loops can stop on their own if the condition becomes false, but this technique is known as `blocking` because your program will be stuck in the while loop until the condition is false, so this practice  is not recommended. 
 
 ## Summary
 In this guide, we covered basics of using the REPL within MicroPico in VS Code. You can now make all the scripts you want within the scripts folder! We also introduced print statements, variable types, if statements, for loops, and while loops. 
