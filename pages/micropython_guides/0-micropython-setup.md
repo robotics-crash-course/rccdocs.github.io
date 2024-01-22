@@ -1,6 +1,6 @@
 # **Setting up Micropython Development Environment**
 ## **Overview**
-To communicate and write code in MicroPython for the PicoW micro-controller, we will use the MicroPico extension in VS Code running in Ubuntu. 
+To communicate and write code in MicroPython for the PicoW microcontroller, we will use the MicroPico extension in VS Code running in **Ubuntu**. 
 
 ## **Clone micropython Repository**
 Within your terminal type the following commands:
@@ -31,6 +31,11 @@ Use `CTRL+Shift+E` to open file explorer on left. To open a terminal, at the top
 Within the terminal in VS Code, run the solve permissions script:
 ```
 ./solvePermissions.sh
+```
+
+If after this step the pico does not connect when the project is configured (later step), can try running this command instead:
+```
+sudo usermod -a -G dialout <username>
 ```
 #### VERY IMPORTANT: RESTART YOUR COMPUTER AFTER THIS STEP !!
 
