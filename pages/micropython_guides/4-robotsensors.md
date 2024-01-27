@@ -1,4 +1,4 @@
-# Using Robot's Raw Components
+# Using Robot's Sensors and Actuators
 
 In this guide, will provide syntax for the helper functions within the [micropython repository](https://github.com/robotics-crash-course/micropython) (See this repository more detail on the helper functions)
 
